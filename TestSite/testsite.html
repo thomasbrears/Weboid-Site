@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Weboid Test Site</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    .pricing-table {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+	  background-color: #f2f3f5;
+    }
+
+
+	.column {
+      flex-basis: 100%;
+      max-width: 450px;
+      padding: 20px;
+      text-align: center;
+      color: #000;
+      background-color: #fff;
+      border-radius: 15px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      margin-bottom: 20px;
+      transition: transform 0.3s;
+    }
+
+    .column:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .column h2 {
+      font-size: 24px;
+      color: #127ebe;
+    }
+
+    .column p {
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+	
+	
+
+    .column .price {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    .column .price-divider {
+      width: 50%;
+      height: 2px;
+      background-color: #127ebe;
+      margin: 10px auto;
+    }
+
+    .column .currency,
+    .column .term {
+      font-size: 16px;
+    }
+
+    .column .content-list li {
+      color: #888;
+      margin-bottom: 5px;
+      font-size: 14px;
+    }
+
+    .column .icon {
+      margin-right: 5px;
+    }
+
+    .column .pricing-button {
+      display: none;
+    }
+
+    .highlight {
+      background-color: #000;
+      color: #fff;
+    }
+
+    .column .save-percent {
+      font-size: 16px;
+      color: #127ebe;
+      font-weight: bold;
+    }
+
+    .featured-sale {
+      background-color: black;
+      color: #fff;
+      padding: 10px;
+      border-radius: 15px;
+      padding-bottom: 18px;
+      margin-bottom: 15px;
+      width: 100%;
+    }
+
+    .column.highlight .featured-sale {
+      background-color: white;
+      color: #000;
+    }
+   
+	.buttons {
+	  text-align: center;
+	  margin-top: 20px;
+	}
+
+	.pricing-button {
+	  background-color: #127ebe;
+	  color: #fff;
+	  border-radius: 15px;
+	  padding: 8px 17px;
+	  text-decoration: none;
+	  display: inline-block;
+	  margin-top: 10px;
+	  transition: background-color 0.3s;
+	  font-size:14px;
+	}
+
+	.pricing-button:hover {
+	  background-color: white;
+	  color: black;
+	}
+	
+	.pricing-header {
+	  font-size: 35px;
+	  text-align: center;
+	  max-width: 900px;
+	  margin: 0 auto; /* Center horizontally */
+	  background-color: black;
+	  color: #127ebe;
+	  padding: 15px;
+	  border-radius: 15px;
+	  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+	  margin-bottom: 20px;
+	  transition: transform 0.3s;
+	}
+	
+
+	.pricing-header:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    }
+	
+	
+	
+	
+	
+	
+	
+ .addons-section {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      max-width: 1100px;
+      margin: 0 auto;
+      margin-bottom: 20px;
+    }
+
+    .addon {
+      width: 25%;
+      margin: 10px;
+      text-align: center;
+      background-color: #fff;
+      border-radius: 15px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s;
+      position: relative;
+    }
+
+    .addon:hover {
+      transform: scale(1.05);
+    }
+
+    .addon-header {
+      background-color: black;
+      color: #fff;
+      padding: 10px;
+      border-radius: 15px 15px 0 0;
+    }
+
+    .addon-title {
+      font-size: 24px;
+      margin-bottom: 10px;
+      color: #127ebe;
+    }
+
+    .addon-details {
+      display: none;
+      padding: 10px;
+      transition: max-height 0.3s ease-out;
+      max-height: 0;
+      overflow: hidden;
+    }
+
+    .addon-expanded .addon-details {
+      display: block;
+      max-height: 500px;
+    }
+
+    .addon-duration,
+    .addon-price {
+      font-style: italic;
+      padding: 10px;
+    }
+
+    .addon-divider {
+      width: 50%;
+      height: 2px;
+      background-color: #127ebe;
+      margin: 10px auto;
+    }
+
+    @media only screen and (max-width: 700px) {
+      .addon {
+        width: 85%;
+        margin: 5px;
+        padding: 5px;
+      }
+	  .column {
+			 flex-basis: 85%;
+			 margin-bottom: 0;
+			 margin: 5px;
+	  }
+    }
+	
+
+
+
+
+
+
+
+
+
+
+#footer {
+  background-color: black;
+  color: #999;
+  overflow-x: hidden;
+  position: relative;
+  padding-top: 20px;
+}
+
+.footer-distributed {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.footer-about,
+.footer-links,
+.footer-contact {
+  flex-basis: 40%;
+  text-align: center;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footer-about p,
+.footer-links p,
+.footer-contact p {
+  text-align: center;
+  color: white;
+}
+
+.footer-about h2,
+.footer-links h2 {
+  text-align: center;
+  color: white;
+  padding-top: 5px;
+  font-size: 22px;
+}
+
+.footer-links {
+  text-align: center;
+}
+
+.footer-links ul {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links li {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.footer-links a {
+  background-color: #f5f5f5;
+  color: black;
+  border-radius: 15px;
+  padding: 8px 17px;
+  text-decoration: none;
+  margin-top: 10px;
+  transition: background-color 0.3s;
+  font-size: 14px;
+}
+
+.footer-links a:hover {
+  background-color: #127ebe;
+  color: white;
+}
+
+
+.footer-about a {
+  color: white;
+}
+
+.footer-about a:hover{
+  color: #127ebe !important;
+}
+
+.footer-partners {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 20px;
+  animation: scroll 60s linear infinite;
+  white-space: nowrap;
+  width: max-content;
+  animation-delay: -100s; /* Delay to allow initial logos to be shown */
+}
+
+.partner {
+  padding: 5px;
+}
+
+.partner img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+  vertical-align: middle;
+}
+
+.footer-join {
+  position: relative;
+  background-color: #f5f5f5;
+  border-radius: 20px;
+  padding: 10px;
+  box-shadow: 0px 2px 4px rgba(255, 255, 255, 0.5);
+  transition: transform 0.3s ease;
+  width: 75%;
+  margin: 0 auto;
+}
+
+.footer-join:hover {
+  transform: scale(1.1);
+}
+
+.footer-join-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footer-join h1 {
+  text-align: center;
+  color: black;
+  margin: 0;
+}
+
+.footer-join h2 {
+  color: #127ebe;
+  font-size: 16px;
+  margin: 0;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.join-logo {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+
+.join-logo img {
+  max-width: 75px;
+  height: auto;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+.join-logo span {
+  margin-left: 10px;
+  color: white;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+
+@media only screen and (max-width: 700px) {
+  .footer-about,
+  .footer-links,
+  .footer-contact {
+    flex-basis: 100%;
+  }
+  .footer-join {
+    width: 90%;
+  }
+  .footer-join-content {
+    align-items: center;
+  }
+}
+
+
+
+
+
+
+
+
+
+  </style>
+</head>
+<body>
+
+					
+						<!-------------------- PRICING PLANS -------------------->
+						
+						
+					  
+					  
+					  <!-------------------- COODED PLANS -------------------->
+					  <div class="pricing-header">Hand-Coded plans
+					  <br>
+					  <a href="#contact" class="pricing-button">Let's talk coding</a>
+						<img src="images/icons/code.png">
+					  <a href="#estimate" class="pricing-button">Request an estimate</a>
+						</div>
+					    <br>
+
+						<div class="pricing-table">
+						<div class="column highlight">
+						  
+						  <!--Coded Basic Plans-->
+						  <h2>Essential Hand-Coded</h2>
+						  <div class="price">
+							<span class="currency">$</span><strike>99</strike><span class="term">/year</span>
+						  </div>
+						  <div class="price">
+							<div style="color:#127ebe" class="featured-sale">
+							  <span class="currency">$</span>299<span class="term">/year</span>
+							  <br>
+							  <span class="save-percent">SAVE 50%</span>
+							</div>
+						  </div>
+
+						  <!--Coded Basic inclusions-->
+						  <div class="price-divider"></div>
+						  <p style="color:white">
+							<i class="fas fa-check icon"></i> 3 custom email addresses
+							<a target="_blank" href="https://weboid.tawk.help"><img src="images/icons/pricinghelp.png" width="14" height="auto" alt="Learn more"></a> <br>
+							<i class="fas fa-check icon"></i> 8gb/month bandwidth
+							<a target="_blank" href="https://weboid.tawk.help"><img src="images/icons/pricinghelp.png" width="14" height="auto" alt="Learn more"></a> <br>
+							<i class="fas fa-check icon"></i> 2 Weboid edits per month
+							<a target="_blank" href="https://weboid.tawk.help"><img src="images/icons/pricinghelp.png" width="14" height="auto" alt="Learn more"></a> <br>
+							<i class="fas fa-check icon"></i> Domain Included
+							<a target="_blank" href="https://weboid.tawk.help"><img src="images/icons/pricinghelp.png" width="14" height="auto" alt="Learn more"></a> <br>
+							<i class="fas fa-check icon"></i> 100% Mobile responsive
+							<a target="_blank" href="https://weboid.tawk.help/article/mobile-responsive"><img src="images/icons/pricinghelp.png" width="14" height="auto" alt="Learn more"></a> <br>
+							<i class="fas fa-check icon"></i> Secure SSL/TLS encryption
+							<a target="_blank" href="https://weboid.tawk.help"><img src="images/icons/pricinghelp.png" width="14" height="auto" alt="Learn more"></a> <br>
+							<i class="fas fa-check icon"></i> Up to 2 pages
+							<a target="_blank" href="https://weboid.tawk.help"><img src="images/icons/pricinghelp.png" width="14" height="auto" alt="Learn more"></a> <br>
+							<i class="fas fa-check icon"></i> Basic Search engine optimization (SEO)
+							<a target="_blank" href="https://weboid.tawk.help"><img src="images/icons/pricinghelp.png" width="14" height="auto" alt="Learn more"></a> <br>
+							<i class="fas fa-check icon"></i> 2 revisions
+							<a target="_blank" href="https://weboid.tawk.help"><img src="images/icons/pricinghelp.png" width="14" height="auto" alt="Learn more"></a> <br>
+							<i class="fas fa-check icon"></i> Dedecated Developer 
+							<a target="_blank" href="https://weboid.tawk.help"><img src="images/icons/pricinghelp.png" width="14" height="auto" alt="Learn more"></a> <br>
+							<i class="fas fa-check icon"></i> Premium Weboid Support (Email, Live chat, Phone)
+							<a target="_blank" href="https://weboid.tawk.help"><img src="images/icons/pricinghelp.png" width="14" height="auto" alt="Learn more"></a> <br>
+						  </p>
+						  <p style="color:grey">
+							<i class="fas fa-times icon"></i> No self edits
+							<a target="_blank" href="https://weboid.tawk.help"><img src="images/icons/pricinghelp.png" width="14" height="auto" alt="Learn more"></a> <br>
+							<i class="fas fa-times icon"></i> No Contact form; Only contact details listed
+							<a target="_blank" href="https://weboid.tawk.help"><img src="images/icons/pricinghelp.png" width="14" height="auto" alt="Learn more"></a> <br>
+							<i class="fas fa-times icon"></i> No social media integration 
+							<a target="_blank" href="https://weboid.tawk.help"><img src="images/icons/pricinghelp.png" width="14" height="auto" alt="Learn more"></a> <br>
+							<i class="fas fa-times icon"></i> No Google Map location
+							<a target="_blank" href="https://weboid.tawk.help"><img src="images/icons/pricinghelp.png" width="14" height="auto" alt="Learn more"></a> <br>
+						  </p>
+						  <p style="color:white">A one-off Development charge of $570 applies
+							<a target="_blank" href="https://weboid.tawk.help"><img src="images/icons/pricinghelp.png" width="14" height="auto" alt="Learn more"></a> <br></p> 
+						</div>
+
+						
+						<!--Coded Pro Plan-->
+						<div class="column">
+						  <h2>Pro Hand-Coded</h2>
+						  <div class="price">
+							<span class="currency">$</span><strike>99</strike><span class="term">/year</span>
+						  </div>
+						  <div class="price">
+							<div style="color:#127ebe" class="featured-sale">
+							  <span class="currency">$</span>299<span class="term">/year</span>
+							  <br>
+							  <span class="save-percent">SAVE 50%</span>
+							</div>
+						  </div>
+
+						  <div class="price-divider"></div>
+						  
+						  <!--Coded Pro inclusions-->
+						  <p style="color:black">
+							<i class="fas fa-check icon"></i> 10 custom email addresses<br>
+							<i class="fas fa-check icon"></i> Substantial bandwidth<br>
+							<i class="fas fa-check icon"></i> 2 Weboid edits per month<br>
+							<i class="fas fa-check icon"></i> Domain Included<br>
+							<i class="fas fa-check icon"></i> 100% Mobile responsive<br>
+							<i class="fas fa-check icon"></i> Secure SSL/TLS encryption<br>
+							<i class="fas fa-check icon"></i> Up to 8 pages<br>
+							<i class="fas fa-check icon"></i> Basic Search engine optimization (SEO)<br>
+							<i class="fas fa-check icon"></i> 2 revisions<br>
+							<i class="fas fa-check icon"></i> Basic Contact form<br>
+							<i class="fas fa-check icon"></i> Dedecated Developer<br>
+							<i class="fas fa-check icon"></i> Premium Weboid Support (Email, Live chat, Phone)<br>
+						  </p>
+						  <p style="color:grey">
+							<i class="fas fa-times icon"></i> No self edits<br>
+							<i class="fas fa-times icon"></i> No social media integration <br>
+							<i class="fas fa-times icon"></i> No Google Map location <br>
+						  </p>
+						  <p style="color:black">A one-off Development charge of $680 applies<br></p>
+						</div>
+						
+						<br>
+						<br>
+					  </div>
+					  <a href="#contact" class="pricing-button">Let's talk Websites</a>
+							<img src="images/icons/code.png">
+						<a href="#estimate" class="pricing-button">Request an estimate below</a>
+						
+						
+						
+						<div class="addons-section">
+						  <div class="addon">
+							<div class="addon-header">
+							  <div class="addon-title"> <img src="images/icons/code.png">Online Bookings</div>
+							<img src="images/icons/down.png" class="addon-icon" alt="Expand/Collapse">
+							</div>
+							<div class="addon-details">
+							  <div class="addon-text">Transform your static website into a dynamic hub for bookings and appointments. Allow your customers to conveniently schedule their appointments, reserve tables, or book services directly from your website. Seamlessly integrate a user-friendly booking system that boosts customer satisfaction and maximizes your business's efficiency.</div>
+							  <div class="addon-duration">Estimated to take 1 day</div>
+							  <div class="addon-price">The price of this add-on will be determined based on your requirements and software</div>
+							</div>
+						  </div>
+											  
+						 
+						  
+						  
+						  
+						  <div class="addon">
+							<div class="addon-header">			  
+							  <div class="addon-title"> <img src="images/icons/code.png">Website Migration</div>
+							<img src="images/icons/down.png" class="addon-icon" alt="Expand/Collapse">
+							</div>
+							<div class="addon-details">
+							<div class="addon-text">Make a seamless transition and upgrade thanks to our hassle-free website migration services. We will handle all aspects of the migration process, ensuring minimal downtime and data loss. Experience a smooth and efficient transfer of your website, allowing you to focus on your business while we take care of the technical details.</div>
+							<div class="addon-divider"></div> <!-- Divider -->
+							<div class="addon-duration">Estimated to take 9 days</div>
+							<div class="addon-price">The price of this add-on will be determend based on your requirements</div>
+						  </div>
+						  </div>
+						
+						  
+						  <div class="addon">
+							<div class="addon-header">			  
+							  <div class="addon-title"> <img src="images/icons/code.png">Blog</div>
+							<img src="images/icons/down.png" class="addon-icon" alt="Expand/Collapse">
+							</div>
+							<div class="addon-details">
+							<div class="addon-text">Take your website to the next level with a captivating blog section. Engage your audience and establish yourself as an industry expert by regularly sharing informative articles, news updates, and valuable insights. Our expert team will set up a stunning blog platform, empowering you to connect with your readers, drive website traffic, and enhance your brand's credibility. <br> This add-on paired with our content writing add-on is a perfect match</div>
+							<div class="addon-divider"></div> <!-- Divider -->
+							<div class="addon-duration">Estimated to take a few hours</div>
+							<div class="addon-price">The price of this add-on will be determend based on your requirements</div>
+						  </div>
+						  </div>
+						  
+						  	 <div class="addon">
+							<div class="addon-header">			  
+							  <div class="addon-title"> <img src="images/icons/code.png"> Newsletter/Marketing Software Setup:</div>
+							<img src="images/icons/down.png" class="addon-icon" alt="Expand/Collapse">
+							</div>
+							<div class="addon-details">
+							<div class="addon-text">Unlock the power of email marketing with our service setup. We'll help you create and integrate a professional newsletter or marketing software account seamlessly into your website. Effortlessly build a loyal subscriber base, customize captivating email templates, and automate your campaigns for maximum impact. Get ready to drive customer engagement, boost sales, and achieve your marketing goals.</div>
+							<div class="addon-duration">Estimated to take a few hours</div>
+							<div class="addon-price">The price of this add-on will be determend based on your requirements</div>
+						  </div>
+						  </div>
+						  
+						  <div class="addon">
+						  <div class="addon-header">			  
+							  <div class="addon-title"> <img src="images/icons/code.png">Marketing Campaigns</div>
+							<img src="images/icons/down.png" class="addon-icon" alt="Expand/Collapse">
+							</div>
+							<div class="addon-details">
+							<div class="addon-text">Unlock the full potential of digital marketing with our comprehensive campaign planning and execution. Let us create and manage targeted campaigns across multiple channels, including PPC advertising, social media, email marketing, and influencer partnerships. Witness your brand soar to new heights as we drive targeted traffic, maximize conversions, and amplify your online presence.</div>
+							<div class="addon-duration">Estimated to take 1 day</div>
+							<div class="addon-price">The price of this add-on will be determend based on your requirements</div>
+						  </div>
+						  </div>
+						  
+						  <div class="addon">
+						  <div class="addon-header">			  
+							  <div class="addon-title"> <img src="images/icons/code.png">Advanced SEO</div>
+							<img src="images/icons/down.png" class="addon-icon" alt="Expand/Collapse">
+							</div>
+							<div class="addon-details">
+							<div class="addon-text">Dominate search engine rankings and attract your target audience with our advanced SEO services. With the help of a contractor, we'll optimize your website's structure, conduct thorough keyword research, and implement powerful strategies to enhance your online visibility. Watch as your organic traffic soars, conversions skyrocket, and your brand becomes the go-to choice in your industry. </div>
+							<div class="addon-duration">Estimated to take 4 days</div>
+							<div class="addon-price">The price of this add-on will be determend based on your requirements</div>
+						  </div>
+						  </div>
+						  
+						  <div class="addon">
+						  <div class="addon-header">			  
+							  <div class="addon-title"> <img src="images/icons/code.png">Logo Creation</div>
+							
+							<img src="images/icons/down.png" class="addon-icon" alt="Expand/Collapse">
+							</div>
+							<div class="addon-details">
+							<div class="addon-text">Make a lasting impression with a professionally designed logo that captures the essence of your brand. Our talented team will craft a unique and visually captivating logo that represents your business's values, mission, and personality. Stand out from the competition, build brand recognition, and establish trust with a logo that speaks volumes</div>
+							<div class="addon-duration">Estimated to take 2 days</div>
+							<div class="addon-price">The price of this add-on will be determend based on your requirements</div>
+						  </div>
+						  </div>
+						  
+						  <div class="addon">
+						  <div class="addon-header">			  
+							  <div class="addon-title"> <img src="images/icons/code.png">Marketing Materials</div>
+							<img src="images/icons/down.png" class="addon-icon" alt="Expand/Collapse">
+							</div>
+							<div class="addon-details">
+							<div class="addon-text">Ignite your offline marketing efforts with eye-catching promotional materials that leave a lasting impact. From striking flyers and posters to business cards and stickers, our experts will create visually appealing materials that align with your brand identity and website. Empower your business to stand out at events, trade shows, and local promotions, and watch your audience grow. We're also able to orginise this material to be printed and sent directly to you!</div>
+							<div class="addon-duration">Estimated to take 3 days</div>
+							<div class="addon-price">The price of this add-on will be determend based on your requirements</div>
+						  </div>
+						  </div>
+						  
+						  	 <div class="addon">
+							 <div class="addon-header">			  
+							  <div class="addon-title"> <img src="images/icons/code.png">Google Suit | Microsoft Office</div>
+							<img src="images/icons/down.png" class="addon-icon" alt="Expand/Collapse">
+							</div>
+							<div class="addon-details">
+							<div class="addon-text">Elevate your communication with professional email accounts powered by leading providers such as Google Suite or Microsoft Office. Impress clients and partners with a personalized email address and enjoy enhanced features, advanced security, and seamless integration with your website. Take your professionalism to new heights and leave a lasting impression with every email you send and the the added benifits of Google Drive or Microsoft Office</div>
+							<div class="addon-duration">Estimated to take 1 day</div>
+							<div class="addon-price">This add-on will be $100 anually</div>
+						  </div>
+						  </div>
+						  
+						  <div class="addon">
+						  <div class="addon-header">			  
+							  <div class="addon-title"> <img src="images/icons/code.png"> Content & Copy Writing</div>
+							<img src="images/icons/down.png" class="addon-icon" alt="Expand/Collapse">
+							</div>
+							<div class="addon-details">
+							<div class="addon-text">Harness the power of persuasive content to captivate your audience and drive conversions. Our skilled team will create engaging website copy, blog articles, and product descriptions tailored to your target audience. Craft a compelling brand story, communicate your unique value proposition, and watch as your audience becomes enthralled with your message.</div>
+							<div class="addon-duration">Estimated to take 1 day</div>
+							<div class="addon-price">This add-on will be charged on a per hour basis</div>
+						  </div>
+						  </div>
+						  
+						  <div class="addon">
+						  	<div class="addon-header">			  
+							  <div class="addon-title"> <img src="images/icons/code.png">Social Media Management</div>
+							<img src="images/icons/down.png" class="addon-icon" alt="Expand/Collapse">
+							</div>
+							<div class="addon-details">
+							<div class="addon-text">Supercharge your social media presence with our management services. Our social media guru will develop a results-driven strategy, curate engaging content, and foster meaningful connections with your audience. From content creation to community engagement and performance tracking, we'll handle every aspect, allowing you to focus on what you do best.</div>
+							<div class="addon-duration">Estimated to take a few hours</div>
+							<div class="addon-price">The price of this add-on will be determend based on your requirements</div>
+						  </div>
+						  </div>
+						  
+						  
+						  
+						  <div class="addon">
+							<div class="addon-header">			  
+							  <div class="addon-title"> <img src="images/icons/code.png">eCommerce Store Management</div>
+							<img src="images/icons/down.png" class="addon-icon" alt="Expand/Collapse">
+							</div>
+							<div class="addon-details">
+							<div class="addon-text">Streamline your eCommerce operations with our store management services. We'll optimize your inventory, fine-tune your product listings for maximum visibility and sales and more. Focus on growing your business while we take care of the complexities of management</div>
+							<div class="addon-duration">Estimated to take 2 days</div>
+							<div class="addon-price">The price of this add-on will be determend based on your requirements</div>
+						  </div>
+						  </div>
+						  
+						  <div class="addon">
+							<div class="addon-header">			  
+							  <div class="addon-title"> <img src="images/icons/code.png"> Online Advertising Management</div>
+							<img src="images/icons/down.png" class="addon-icon" alt="Expand/Collapse">
+							</div>
+							<div class="addon-details">
+							<div class="addon-text">Experience the full potential of online advertising with our comprehensive management services. We will handle every aspect of your campaigns, from setup and optimization to monitoring and reporting. Maximize your ad spend, reach your target audience, and achieve exceptional ROI across platforms such as Google Ads, Facebook Ads, and Instagram Ads.</div>
+							<div class="addon-divider"></div> <!-- Divider -->
+							<div class="addon-duration">Estimated to take 1 day</div>
+							<div class="addon-price">The price of this add-on will be determend based on your requirements</div>
+						  </div>
+						  </div>
+						  
+						  </div>
+						  
+						  
+						  <script>
+						  var addons = document.querySelectorAll(".addon");
+						  addons.forEach(function(addon) {
+							var header = addon.querySelector(".addon-header");
+							var details = addon.querySelector(".addon-details");
+							var icon = addon.querySelector(".addon-icon");
+						  
+							header.addEventListener("click", function() {
+							  addon.classList.toggle("addon-expanded");
+							  details.style.maxHeight = addon.classList.contains("addon-expanded") ? details.scrollHeight + "px" : "0";
+							  icon.src = addon.classList.contains("addon-expanded") ? "images/icons/up.png" : "images/icons/down.png";
+							});
+						  });
+						</script>
+						  
+						  
+						  
+						  
+						  
+						  
+						  
+						  
+						  
+
+
+
+		<!-- FOOTER -->
+		<div id="footer">
+		
+		  <!-- FOOTER ABOUT/LINKS START -->
+		  <div class="container">
+			<!-- JOIN US START -->
+			<div class="footer-join">
+			  <div class="footer-join-content">
+				<div class="join-logo">
+				  <img src="images/black_trans.png" style="padding-right:10px;" width="100" height="100" alt="Weboid Logo" />
+				  <h1>Join the Weboid Whānau today</h1>
+				</div>
+				<h2 style="margin: 0;">Unlocking Business Growth with Innovative Digital Solutions that Inspire, Engage, and Unleash Potential</h2>
+			  </div>
+			</div>
+			<!-- JOIN US END-->
+
+			<div class="footer-distributed">
+			  <!-- ABOUT START-->
+			  <div class="footer-about">
+				<h2>Weboid.dev</h2>
+				<p>Welcome to Weboid, where we specialize in crafting tailored websites that captivate your audience and drive desired actions. With our expert team and dedication to your success, we'll create a website that embodies your brand and empowers your online presence. Our goal is to make the website design process seamless and stress-free for you. 
+				<br> <a href="#contact">Contact us</a> today for exceptional results and let's create a website that truly represents your business, inspires visitors, and helps you achieve your goals. Email us at <a href="mailto:hello@weboid.dev">hello@weboid.dev</a> or text or call us on <a href="tel:+64272690900">+64 27 269 0900</a>
+			  </div>
+			  <!-- ABOUT END -->
+
+			  <!-- LINKS START -->
+			  <div class="footer-links">
+				<h2>Quick links</h2>
+				<ul>
+				  <li><a class="pricing-button" href="index.html">Home</a></li>
+				  <li><a class="pricing-button" href="index.html#contact">Contact us</a></li>
+				  <li><a class="pricing-button" href="index.html#services">Services</a></li>
+				  <li><a class="pricing-button" href="index.html#about">About</a></li>
+				  <li><a class="pricing-button" href="pricing.html">Pricing</a></li>
+				  <li><a class="pricing-button" href="pricing.html#estimate">Quote/Estimate</a></li>
+				  <li><a class="pricing-button" href="portfolio.html">Portfolio</a></li>
+				  <li><a class="pricing-button" href="faqs.html">Frequently Asked Questions</a></li>
+				  <li><a class="pricing-button" href="/portal">Billing Portal</a></li>
+				  <li><a class="pricing-button" href="/status">Status</a></li>
+				  <li><a class="pricing-button" href="report-error.html">Report a website issue</a></li>
+				  <li><a class="pricing-button" href="privacy.html">Privacy Policy</a></li>
+				  <li><a class="pricing-button" href="terms.html">Terms and Conditions</a></li>
+				  <li><a class="pricing-button" href="sitemap.xml">SiteMap</a></li>
+				</ul>
+			  </div>
+			  <!-- LINKS END -->
+
+			</div>
+		  </div>
+		  <!-- END ABOUT/LINKS -->
+
+		  <!-- Partners Section Start-->
+		  <div class="footer-partners">
+			<!-- Partner Images -->
+			<div class="partner">
+			  <a href="https://www.designrush.com/agency/profile/weboid">
+				<img src="images/designrush.png" alt="Design Rush Badge" />
+			  </a>
+			</div>
+			<div class="partner">
+			  <a href="https://weboid.dev">
+				<img src="images/white_trans.png" width="150" height="150" alt="Weboid logo" />
+			  </a>
+			</div>
+			<div class="partner">
+			  <a href="index.html#about">
+				<img src="images/nz.png" alt="100% Aotearoa New Zealand Owned Badge" />
+			  </a>
+			</div>
+			<div class="partner">
+			  <a href="#">
+				<img src="images/wixpartner.png" alt="Wix Partner Badge" />
+			  </a>
+			</div>
+			<div class="partner">
+			  <a href="#">
+				<img src="images/squarespace.jpg" Style="border-radius: 10px;" width="150" height="auto" alt="SquareSpace Partner Badge" />
+			  </a>
+			</div>
+			<div class="partner">
+			  <a href="#">
+				<img src="images/zohopartner1.png" width="75" height="75" alt="Zoho Partner logo" />
+			  </a>
+			</div>
+			<div class="partner">
+			  <a href="#">
+				<img src="images/zohopartner.png" width="220" height="auto" alt="Zoho auth Partner Badge" />
+			  </a>
+			</div>
+			<div class="partner">
+			  <a href="#">
+				<img src="images/ecwid.png" width="270" height="auto" alt="Ecwid Partner Badge" />
+			  </a>
+			</div>
+			<div class="partner">
+			  <a href="#">
+				<img src="images/shoprocket.webp" width="250" height="auto" alt="ShopRocket Partner" />
+			  </a>
+			</div>
+			<div class="partner">
+				<a href="#">
+					<img src="images/github.png" Style="border-radius: 10px;" width="250" height="auto" alt="Github Partner Badge" />
+				</a>
+			</div>
+			<div class="partner">
+				<a href="#">
+					<img src="images/cloudflare.png" Style="border-radius: 10px;" width="250" height="auto" alt="CloudFlare Partner Badge" />
+				</a>
+			</div>
+					  
+			<div class="partner">
+			  <a href="/portal">
+				<img src="images/stripepartner2.png" Style="border-radius: 10px;" width="280" height="auto" alt="Stripe Partner Badge" />
+			  </a>
+			</div>
+			<div class="partner">
+			  <a href="#">
+				<img src="images/shopifypartner.png" width="250" height="auto" alt="Shopify Partner Badge" />
+			  </a>
+			</div>
+		  </div>
+		  <!-- Partners End -->
+		  
+		  <!-- Copyright Start -->
+		  <div class="footer-about">
+		  <hr style="width:75%">
+		  <p style="color:white;text-align:center;">
+			©
+			<script>
+			  var CurrentYear = new Date().getFullYear();
+			  document.write(CurrentYear);
+			</script>
+			Weboid, All Rights Reserved.
+			<br>
+			New Zealand Business Number, 9429050012305
+			<br>
+			Website hand-coded with <3 by Weboid
+			<br>
+			
+		  </p>
+
+		  <p style="color:black; text-align:center;">
+			hello@weboid.dev | Website Developers | 0272690900 | Developing for all of Aotearoa New Zealand - Northland, Whangarei, Auckland, Waikato, Bay of Plenty, Gisborne, Hawke's Bay, Taranaki, Manawatū-Whanganui, Wellington, Tasman, Nelson, Marlborough, West Coast, Canterbury, Otago, Southland, Queenstown and more...
+		  </p>
+		</div>
+		<!-- Copyright End -->
+		</div>
+		<!-- FOOTER END -->
+
+		<!-- Back to top -->
+		<a href="#" id="scroll-to-top" class="dmtop global-radius">
+			<i class="fa fa-angle-up"></i>
+		</a>
+			  
+</body>
+</html>
+
+		<!-- Footer partner scroll JS -->
+		<script>
+		  // Duplicate partner logos to ensure continuous scrolling effect
+		  const partnerSection = document.querySelector('.footer-partners');
+		  const partnerLogos = document.querySelectorAll('.partner');
+
+		  partnerLogos.forEach((logo) => {
+			partnerSection.appendChild(logo.cloneNode(true));
+		  });
+		</script>
+		
+		
