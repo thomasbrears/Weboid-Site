@@ -423,25 +423,226 @@
     align-items: center;
   }
 }
+      
+      
+      
+      
+
+      
+
+      
+ 
+      
+
+
+.contact-section {
+  background-color: #fff;
+  padding: 40px;
+}
+
+.container {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+p {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.contact-info-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  position: relative;
+}
+
+.left-section {
+  flex: 0 0 40%;
+  text-align: center;
+  position: sticky;
+  top: 0;
+}
+
+.left-section h2,
+.left-section p {
+  padding-right: 10px;
+}
+      
+.left-section h3 {
+  margin-top: 0;
+}
+
+.left-section img {
+  max-width: 100%;
+  height: auto;
+  margin-top: 20px;
+}
+
+.right-section {
+  flex: 1 1 55%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.contact-block {
+  position: relative;
+  width: calc(50% - 10px);
+  margin-bottom: 30px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0px 2px 4px rgba(255, 255, 255, 0.5);
+  transition: transform 0.3s ease;
+  text-align: center;
+  padding: 20px;
+}
+
+.contact-block:hover {
+  transform: scale(1.1);
+}
+      
+.contact-block h4 {
+  margin-top: 10px;
+}
+
+.contact-block p {
+  margin: 10px 0;
+}
+
+.contact-block .contact-button {
+  margin-top: 20px;
+}
+
+.contact-block a {
+  background-color: #127ebe;
+  color: #fff;
+  border-radius: 15px;
+  padding: 8px 17px;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 10px;
+  transition: background-color 0.3s;
+  font-size: 14px;
+}
+
+.contact-block a:hover {
+  background-color: white;
+  border: 2px solid black;
+  color: black;
+}
+
+
+.contact-form {
+  margin-top: 40px;
+}
+
+.contact-form h3 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 95%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #127ebe;
+}
+
+.form-group input.error,
+.form-group textarea.error {
+  border-color: #b94a48;
+}
+
+.form-group input.error:focus,
+.form-group textarea.error:focus {
+  border-color: #b94a48;
+  box-shadow: 0 0 5px rgba(185, 74, 72, 0.5);
+}
+
+button[type="submit"] {
+  background-color: #127ebe;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #0e609b;
+}
+
+@media (max-width: 1200px) {
+  .contact-block {
+    width: 48%;
+  }
+}
+
+@media (max-width: 768px) {
+  .right-section {
+    flex-direction: column;
+  }
+    
+  .left-section {
+     flex: 0 0 40%;
+  }
+
+  .contact-block {
+    width: 100%;
+  }
+
+  .contact-form {
+    max-width: 100%;
+    padding: 20px;
+  }
+}
+
+@media (min-width: 768px) {
+  .contact-info-wrapper {
+    flex-wrap: nowrap;
+  }
+
+  .contact-block {
+    flex: 1 1 250px;
+    
+  }
+}
 
 
 
 
 
-
-
-
-
+      
+      
+      
+      
   </style>
 </head>
 <body>
 
 					
 						<!-------------------- PRICING PLANS -------------------->
-						
-						
-					  
-					  
+
 					  <!-------------------- COODED PLANS -------------------->
 					  <div class="pricing-header">Hand-Coded plans
 					  <br>
@@ -746,6 +947,130 @@
 						  
 						  
 						  
+<!-- CONTACT US START -->
+				<div class="row">
+					<div class="col-md-12">
+						<section id="contact" class="contact-section">
+                              <div class="container">
+
+                                <div class="contact-info-wrapper">
+                                  <div class="left-section">
+                                    <h2><b>Contact us</b> | Whakapā mai</h2>
+                                     <p><b>We are here to assist you and provide the support you need! <br>
+                                           Please don't hesitate to reach out to us using your preferred method of communication.<br>
+                                           If you have any questions, koa īmēra (please email) us!</b></p>
+                                    <img src="images/support-image.jpg">
+                                  </div>
+                                  <div class="right-section" style="padding-right: 10px;">
+                                    <div class="contact-block">
+                                      <h4>Email us</h4>
+                                      <p>If you have any questions, koa īmēra (please email) us!</p>
+                                      <a target="_blank" href="mailto:hello@weboid.com" class="contact-button">General Enquiries</a>
+                                      <a target="_blank" href="mailto:support@weboid.com" class="contact-button">Support</a> 
+                                      <a target="_blank" href="mailto:accounts@weboid.com" class="contact-button">Billing & Accounts</a>
+                                    </div>
+                                    <div class="contact-block">
+                                      <h4>Call us</h4>
+                                      <p>If you'd like to speak with a human, you can call us on +6427 269 0900</p>
+                                      <a href="tel:+64272690900" class="contact-button">Call Us</a>
+                                    </div>
+                                    <div class="contact-block">
+                                      <h4>Chat with us Live</h4>
+                                      <p>Chat with our team in real-time for immediate assistance.</p>
+                                      <a target="_blank" href="https://tawk.to/chat/624c1a932abe5b455fc4f01c/1fvskfkt8" class="contact-button">Chat Now</a>
+                                    </div>
+                                    <div class="contact-block">
+                                      <h4>View our FAQs</h4>
+                                      <p>Check out our Frequently Asked Questions for quick answers.</p>
+                                      <a href="faq.html" class="contact-button">Visit our FAQs</a>
+                                    </div>
+                                    <div class="contact-block">
+                                      <h4>Schedule a Call or Meeting</h4>
+                                      <p>Book a call or meeting with our team at a convenient time.</p>
+                                      <a target="_blank" href="https://weboid.dev/call" class="contact-button">Schedule</a>
+                                    </div>
+                                    <div class="contact-block">
+                                      <h4>Request a Proposal</h4>
+                                      <p>Submit a proposal request to discuss your project in detail</p>
+                                      <a href="pricing.html#proposal" class="contact-button">Request Proposal</a>
+                                    </div>
+                                    <div class="contact-block">
+                                      <h4>Flick us a message</h4>
+                                        <div class="contact_form">
+                                                <div id="message"></div>
+                                                <form id="contactForm" name="sentMessage" novalidate="novalidate">
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <input class="form-control" id="name" type="text" placeholder="Your Full Name (Tō ingoa)" required="required" data-validation-required-message="Please enter your full name (Tō ingoa).">
+                                                                <p class="help-block text-danger"></p>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <input class="form-control" id="email" type="email" placeholder="Your Email (Tō īmēra)" required="required" data-validation-required-message="Please enter your email address (Tō īmēra).">
+                                                                <p class="help-block text-danger"></p>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <input class="form-control" id="phone" type="tel" placeholder="Your Phone (Tō nama waea)" required="required" data-validation-required-message="Please enter your phone number (Tō nama waea).">
+                                                                <p class="help-block text-danger"></p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <textarea class="form-control" id="message" placeholder="Your Message (Tō karere)" required="required" data-validation-required-message="Please enter a message (Tō karere)."></textarea>
+                                                                <p class="help-block text-danger"></p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="clearfix"></div>
+                                                        <div class="col-lg-12 text-center">
+                                                            <div id="success"></div>
+                                                            <button id="sendMessageButton" class="sim-btn hvr-bounce-to-top" type="submit">Send Message | Tuku karere</button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div> 
+                                  </div>
+                                
+                              </div>
+                            </section>
+
+    
+<script>
+var leftSection = document.querySelector('.left-section');
+var rightSection = document.querySelector('.right-section');
+var headerHeight = 200; // Set the header height to 200 pixels
+
+window.addEventListener('scroll', function () {
+  var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  var leftSectionHeight = leftSection.offsetHeight;
+  var rightSectionHeight = rightSection.offsetHeight;
+  var windowHeight = window.innerHeight;
+
+  if (windowHeight >= leftSectionHeight + headerHeight) {
+    if (scrollTop >= leftSectionHeight - windowHeight + headerHeight) {
+      rightSection.style.position = 'fixed';
+      rightSection.style.top = headerHeight + 'px';
+      rightSection.style.paddingTop = '200px'; // Add 200 pixels of padding to the top of the right section
+    } else {
+      rightSection.style.position = 'static';
+      rightSection.style.top = 'auto';
+      rightSection.style.paddingTop = '0';
+    }
+  } 
+    // Check if the screen width is less than or equal to 768px
+if (window.innerWidth <= 768) {
+  // Disable sticky behavior on small screens
+  document.querySelector('.left-section').style.position = 'static';
+  document.querySelector('.right-section').style.paddingTop = '0';
+}
+
+</script>
+			</div>
+			
+		</div>
+	<!-- end Contact us -->
+
 						  
 						  
 						  
