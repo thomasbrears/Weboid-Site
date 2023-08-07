@@ -2113,14 +2113,18 @@ p {
 .form-control::placeholder {
   color: black !important;
 }
-
+      
+.form-group textarea {
+  min-height: 150px;
+}
+      
 .form-group input,
 .form-group textarea {
   width: 100% !important;
-  padding: 5px;
+  padding: 10px;
   font-size: 13px;
   border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: 15px; /* Increased the rounded corners */
   background-color: #fff;
   transition: border-color 0.3s;
 }
@@ -2131,6 +2135,14 @@ p {
   border-color: #127ebe;
 }
 
+/* Add styling for form labels */
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 14px;
+  font-weight: bold;
+}
+      
 .form-group input.error,
 .form-group textarea.error {
   border-color: #b94a48;
@@ -2163,11 +2175,21 @@ button[type="submit"]:hover {
   }
 }
 
-@media (max-width: 1200px) {
+
+@media (min-width: 768px) {
+  .contact-info-wrapper {
+    flex-wrap: wrap;
+  }
+
   .contact-block {
-    width: 48%;
+    flex: 1 1 calc(50% - 10px);
+  }
+
+  .form-group {
+    flex: 1 1 calc(50% - 10px);
   }
 }
+
 
 @media (max-width: 768px) {
   .right-section {
@@ -2183,26 +2205,13 @@ button[type="submit"]:hover {
   .contact-block {
     width: 90%;
     margin: 10px auto; /* Center the contact blocks horizontally */
+    z-index: 1; /* Add a higher z-index to bring the blocks above the left section */
   }
 
   .contact-form {
     display: none;
   }
 }
-
-
-@media (min-width: 768px) {
-  .contact-info-wrapper {
-    flex-wrap: nowrap;
-  }
-
-  .contact-block {
-    flex: 1 1 250px;
-    
-  }
-
-}
-
 
 
 /*------------------------------------------------------------------
