@@ -1,0 +1,17 @@
+@font-face {
+    font-family: 'Mangaka';
+    src: url('/fonts/mangaka-webfont.woff2') format('woff2'),
+         url('/fonts/mangaka-webfont.woff') format('woff'),
+         url('/fonts/Mangaka.ttf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'Open Sans';
+    src: url('/fonts/OpenSans-Medium.ttf') format('opentype'),
+         url('/fonts/OpenSans-regular.ttf') format('opentype');
+    font-weight: bold;
+    font-style: normal;
+  }
+  
