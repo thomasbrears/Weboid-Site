@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { FaCode } from "react-icons/fa"; 
 import TitleHeader from "../components/TitleHeader";
 import FAQCTASection from "../components/FAQCTASection";
 import { Helmet } from "react-helmet-async";
@@ -40,7 +39,6 @@ const ServiceDetails = ({ service }) => {
 // Main Services Page Component
 const ServicesPage = () => {
   const [selectedService, setSelectedService] = useState(null);
-  const [darkMode, setDarkMode] = useState(false);
 
   const services = [
     {
@@ -269,7 +267,6 @@ const ServicesPage = () => {
       setSelectedService(serviceToOpen);
     }
   }, []); // Empty dependency array means this runs once when the page loads
-
 
   return (
     <div>

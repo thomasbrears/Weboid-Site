@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import TitleHeader from "../components/TitleHeader";
 import ContactSection from "../components/ContactSection";
 import FAQCTASection from "../components/FAQCTASection";

@@ -4,7 +4,7 @@ import { HelmetProvider } from 'react-helmet-async'; // HelmetProvider for dynam
 import { ThemeProvider } from './ThemeContext';
 
 // Toastify message container and style
-import { ToastContainer, toast } from 'react-toastify'; 
+import { ToastContainer } from 'react-toastify'; 
 import 'react-toastify/dist/ReactToastify.css';
 
 // pages

@@ -27,7 +27,7 @@ const Footer = () => {
               Welcome to Weboid, where we specialize in crafting tailored websites that captivate your audience and drive desired actions. With our expert team and dedication to your success, we'll create a website that embodies your brand and empowers your online presence. Our goal is to make the website design process seamless and stress-free for you.
             </p>
             <div className="flex space-x-4">
-              <a href="https://www.facebook.com/weboid.dev" className="hover:text-white transition-colors duration-200">
+              <a href="https://www.facebook.com/weboid.dev" rel="noreferrer" className="hover:text-white transition-colors duration-200">
                 <FaFacebookF size={20} />
               </a>
             </div>
@@ -48,7 +48,7 @@ const Footer = () => {
                   <Link to="/contact" className="hover:text-blue-600 transition-colors duration-200">Contact us</Link>
                 </li>
                 <li>
-                  <a href="https://weboid.freshdesk.com" target="_blank" className="hover:text-blue-600 transition-colors duration-200">Support Portal</a>
+                  <a href="https://weboid.freshdesk.com" rel="noreferrer" target="_blank" className="hover:text-blue-600 transition-colors duration-200">Support Portal</a>
                 </li>
                 <li>
                   <Link to="/pricing" className="hover:text-blue-600 transition-colors duration-200">Our Pricing</Link>
@@ -60,7 +60,7 @@ const Footer = () => {
                   <Link to="/portfolio" className="hover:text-blue-600 transition-colors duration-200">Our Work</Link>
                 </li>
                 <li>
-                  <a href="https://weboid.statuspage.io" target="_blank" className="hover:text-blue-600 transition-colors duration-200">Status</a>
+                  <a href="https://weboid.statuspage.io" rel="noreferrer" target="_blank" className="hover:text-blue-600 transition-colors duration-200">Status</a>
                 </li>
                 <li>
                   <Link to="/report-error" className="hover:text-blue-600 transition-colors duration-200">Report a website issue</Link>
@@ -78,15 +78,15 @@ const Footer = () => {
             <ul className="space-y-4">
               <li className="flex items-center space-x-3">
                 <MdPhone size={20} />
-                <span><a className="hover:text-blue-600 transition-colors duration-200" href="tel:+64272690900">+64 27 269 0900</a></span>
+                <span><a className="hover:text-blue-600 transition-colors duration-200" rel="noreferrer" href="tel:+64272690900">+64 27 269 0900</a></span>
               </li>
               <li className="flex items-center space-x-3">
                 <MdEmail size={20} />
-                <span><a className="hover:text-blue-600 transition-colors duration-200" href="mailto:hello@weboid.dev">hello@weboid.dev</a></span>
+                <span><a className="hover:text-blue-600 transition-colors duration-200" rel="noreferrer" href="mailto:hello@weboid.dev">hello@weboid.dev</a></span>
               </li>
               <li className="flex items-center space-x-3">
                 <MdContactSupport size={20} />
-                <span><a className="hover:text-blue-600 transition-colors duration-200" href="/contact">Contact us</a></span>
+                <span><a className="hover:text-blue-600 transition-colors duration-200" rel="noreferrer" href="/contact">Contact us</a></span>
               </li>
             </ul>
           </div>
@@ -105,16 +105,16 @@ const Footer = () => {
             <div className="mt-4 md:mt-0">
               <ul className="flex space-x-6 text-sm">
                 <li>
-                  <a href="https://weboid.freshdesk.com/support/solutions/articles/51000372586-terms-of-use" target="_blank" className="hover:text-blue-600 transition-colors duration-200">Terms of Use</a>
+                  <a href="https://weboid.freshdesk.com/support/solutions/articles/51000372586-terms-of-use" rel="noreferrer" target="_blank" className="hover:text-blue-600 transition-colors duration-200">Terms of Use</a>
                 </li>
                 <li>
-                  <a href="https://weboid.freshdesk.com/support/solutions/articles/51000372061-privacy-policy" target="_blank" className="hover:text-blue-600 transition-colors duration-200">Privacy Policy</a>
+                  <a href="https://weboid.freshdesk.com/support/solutions/articles/51000372061-privacy-policy" rel="noreferrer" target="_blank" className="hover:text-blue-600 transition-colors duration-200">Privacy Policy</a>
                 </li>
                 <li>
-                  <a href="https://weboid.freshdesk.com/support/solutions/articles/51000372062-cookie-notice" target="_blank" className="hover:text-blue-600 transition-colors duration-200">Cookie Policy</a>
+                  <a href="https://weboid.freshdesk.com/support/solutions/articles/51000372062-cookie-notice" rel="noreferrer" target="_blank" className="hover:text-blue-600 transition-colors duration-200">Cookie Policy</a>
                 </li>
                 <li>
-                  <a href="https://weboid.freshdesk.com/" target="_blank" className="hover:text-blue-600 transition-colors duration-200"></a>
+                  <a href="https://weboid.freshdesk.com/" rel="noreferrer" target="_blank" className="hover:text-blue-600 transition-colors duration-200">Support Portal</a>
                 </li>
               </ul>
             </div>

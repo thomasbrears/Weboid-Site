@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import TitleHeader from '../components/TitleHeader';
 import ReusableSection from '../components/ReusableSection';
