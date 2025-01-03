@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/Weboid-Site/static/css/main.13eb5135.css",
-    "main.js": "/Weboid-Site/static/js/main.d416bb7f.js",
+    "main.js": "/Weboid-Site/static/js/main.97f9eb8f.js",
     "static/js/488.e19572ea.chunk.js": "/Weboid-Site/static/js/488.e19572ea.chunk.js",
     "index.html": "/Weboid-Site/index.html",
     "main.13eb5135.css.map": "/Weboid-Site/static/css/main.13eb5135.css.map",
-    "main.d416bb7f.js.map": "/Weboid-Site/static/js/main.d416bb7f.js.map",
+    "main.97f9eb8f.js.map": "/Weboid-Site/static/js/main.97f9eb8f.js.map",
     "488.e19572ea.chunk.js.map": "/Weboid-Site/static/js/488.e19572ea.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.13eb5135.css",
-    "static/js/main.d416bb7f.js"
+    "static/js/main.97f9eb8f.js"
   ]
 }
