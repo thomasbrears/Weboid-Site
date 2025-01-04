@@ -1,5 +1,5 @@
-import React, { useEffect, Navigate } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async'; // HelmetProvider for dynamicly setting page head including titles
 import { ThemeProvider } from './ThemeContext';
 
