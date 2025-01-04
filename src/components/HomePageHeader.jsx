@@ -10,7 +10,7 @@ const HomePageHeader = ({ backgroundImage }) => {
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
-        height: "80vh",
+        height: "100vh",
       }}
     >
       <div className="bg-black bg-opacity-60 h-full flex flex-col justify-center items-center">

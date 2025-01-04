@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { MdInfoOutline } from 'react-icons/md'; // Notification icon
 import { FaTimes } from 'react-icons/fa'; // Close icon
 
-// Helper function to check if current date is within range in NZST
+// Helper function to check if the current date is within range in NZST
 const isDateInRange = (startDate, endDate) => {
   const currentDate = new Date();
   const NZSTOffset = 12 * 60; // NZST is UTC +12 hours (720 minutes)
-  
+
   // Adjust current date to NZST by adding 12 hours
   const localCurrentDate = new Date(currentDate.getTime() + NZSTOffset * 60 * 1000);
-  
+
   const start = new Date(startDate);
   const end = new Date(endDate);
 
@@ -22,6 +22,7 @@ const isDateInRange = (startDate, endDate) => {
 const CustomNotification = ({ title, subtext, extendedSubtext, startDate, endDate }) => {
   const [showModal, setShowModal] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
+  const [bottomPosition, setBottomPosition] = useState('20px');
 
   // Only show the notification if it's within the date range
   const shouldShowNotification = isDateInRange(startDate, endDate);
@@ -41,12 +42,32 @@ const CustomNotification = ({ title, subtext, extendedSubtext, startDate, endDat
     setShowModal(false);
   };
 
+  // Dynamically adjust the notification position based on screen size
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 700) {
+        setBottomPosition('80px'); // For smaller screens
+      } else {
+        setBottomPosition('20px'); // For larger screens
+      }
+    };
+
+    handleResize(); // Set initial value
+    window.addEventListener('resize', handleResize);
+
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
     <>
       {isVisible && shouldShowNotification && (
         <div
-          className="fixed bottom-5 left-1/2 transform -translate-x-1/2 bg-white text-black p-4 rounded-lg shadow-lg z-50"
-          style={{ maxWidth: '500px', width: '100%' }}
+          className="fixed left-1/2 transform -translate-x-1/2 bg-white text-black p-4 rounded-lg shadow-lg z-50"
+          style={{
+            bottom: bottomPosition,
+            maxWidth: '500px',
+            width: '100%',
+          }}
         >
           <div className="flex justify-between items-center">
             <div className="flex items-center space-x-4">

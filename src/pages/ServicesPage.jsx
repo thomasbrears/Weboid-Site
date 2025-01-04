@@ -153,7 +153,7 @@ const ServicesPage = () => {
     },
     {
       title: "Newsletter / Marketing Setup",
-      imageUrl: "img/services/marketing.jpg",
+      imageUrl: "img/services/Marketing.jpg",
       description:
         "Unleash the potential of email marketing with our expert setup service. Seamlessly integrate a professional newsletter or marketing software account into your website, taking your customer engagement to the next level. Our dedicated team will guide you through the process, helping you build a loyal subscriber base and customize captivating email templates that align with your brand identity. With our automation expertise, your campaigns will be executed effortlessly, maximizing their impact and driving exceptional results. Prepare to witness increased customer engagement, higher sales, and the achievement of your marketing goals with our seamless setup service.",
       estimatedTime: "1",
@@ -163,7 +163,7 @@ const ServicesPage = () => {
     },
     {
       title: "Newsletter / Marketing Management",
-      imageUrl: "img/services/management.jpg",
+      imageUrl: "img/services/Management.jpg",
       description:
         "Unleash the full potential of your email marketing strategy with our expert email campaign management service. Our skilled team will craft compelling and personalized email campaigns that resonate with your audience and drive action. From captivating subject lines to engaging content and strategic call-to-actions, each email will be carefully curated to deliver maximum impact and boost your conversion rates. With our comprehensive email management service, you can sit back and relax as we handle all aspects of your email campaigns. We'll manage your subscriber lists, segment your audience for targeted messaging, and ensure timely and consistent email delivery. Our team will monitor the performance of each campaign, providing valuable insights to refine your strategy and achieve even greater success. Whether you're nurturing leads, promoting new products, or building customer loyalty, our email campaign management service will elevate your marketing efforts and help you achieve your business goals. Trust Weboid to deliver exceptional email campaigns that inspire, engage, and drive results.",
       estimatedTime: "ongoing",
@@ -223,7 +223,7 @@ const ServicesPage = () => {
     },
     {
       title: "Social Media Management",
-      imageUrl: "img/services/management.jpg",
+      imageUrl: "img/services/Management.jpg",
       description:
         "Elevate your brand's social media game with Weboid's dynamic management services. Our team of social media gurus is equipped with the expertise to supercharge your online presence, leaving a lasting impact on your target audience. We carefully curate engaging content that resonates with your followers and builds authentic connections. With Weboid at the helm, you can confidently leave the complexities of social media management to us. We take care of content creation, ensuring every post is captivating and aligned with your brand's identity. Our community engagement efforts foster meaningful interactions with your audience, encouraging loyalty and advocacy. Plus, we diligently track performance metrics, providing insightful analytics that empower you to make data-driven decisions for future growth. Step into the spotlight and let Weboid's social media management services unleash your brand's full potential. With our comprehensive approach, you can focus on what you do best while we navigate the ever-evolving social media landscape, ensuring your brand shines brightly and captures the hearts of your audience. Trust Weboid to make your social media journey a resounding success.",
       estimatedTime: "ongoing",
@@ -233,7 +233,7 @@ const ServicesPage = () => {
     },
     {
       title: "ECommerce Store Managament",
-      imageUrl: "img/services/management.jpg",
+      imageUrl: "img/services/Management.jpg",
       description:
         "Take the stress out of running your eCommerce store with Weboid's comprehensive store management services. We handle all the setup and behind-the-scenes work to optimize your online store, allowing you to focus on what you do best – serving your customers and growing your business. Our experienced team will expertly set up your products and listings, ensuring they are finely tuned for maximum visibility and sales. From inventory optimization to managing the flow of your store, we take care of the complexities, so you can efficiently pack and fulfill orders, ensuring seamless customer experiences. With Weboid's store management services by your side, you can rest assured that your ECommerce business is in capable hands. Let us handle the technicalities while you concentrate on building lasting customer relationships and achieving your business goals. Trust Weboid to streamline your ECommerce operations and unlock the full potential of your online store.",
       estimatedTime: "ongoing",
@@ -243,7 +243,7 @@ const ServicesPage = () => {
     },
     {
       title: "Online Advertising Management",
-      imageUrl: "img/services/management.jpg",
+      imageUrl: "img/services/Management.jpg",
       description:
         "Discover the true potential of online advertising with Weboid's comprehensive management services. Our expert team handles every aspect of your campaigns, from setup to optimization and monitoring, ensuring you achieve exceptional ROI. We tailor each campaign to your specific goals, maximizing your ad spend and reaching your target audience across platforms like Google Ads, Facebook Ads, and Instagram Ads. Experience the ease of seamless setup and expert optimization as we keep a watchful eye on campaign performance, providing data-driven insights to refine strategies. With Weboid by your side, you can elevate your online presence, driving qualified leads and remarkable business growth. Maximize your impact and unleash the power of online advertising today",
       estimatedTime: "1-2",
