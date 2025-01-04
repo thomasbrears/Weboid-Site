@@ -40,7 +40,7 @@ const services = [
   },
   {
     title: "Service Management",
-    image: "/img/services/management.jpg",
+    image: "/img/services/Management.jpg",
     link: "/services#social-media-management",
   },
   {

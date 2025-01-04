@@ -10,7 +10,7 @@ const PortfolioPage = () => {
         <title>Our Portfolio | Showcase of Innovative Projects | Weboid</title>
         <meta name="description" content="Explore Weboid's portfolio of innovative digital projects. See how we've helped businesses succeed with our web development and digital solutions."/>
         <meta name="keywords" content="Weboid Portfolio, Digital projects, Web development showcase, Innovative projects, Weboid success stories"/>
-        
+
         <meta property="og:title" content="Portfolio | Showcase of Innovative Projects | Weboid"/>
         <meta property="og:description" content="Explore Weboid's portfolio of innovative digital projects. See how we've helped businesses succeed with our web development and digital solutions."/>
       </Helmet>
@@ -18,7 +18,7 @@ const PortfolioPage = () => {
       <TitleHeader
         title="Our work"
         subtitle="Portfolio"
-        backgroundImage="img/code-legal.jpg"
+        backgroundImage="img/general-cover.jpg"
       />
 
       <ReusableSection

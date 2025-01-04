@@ -41,7 +41,7 @@ const ReportErrorPage = () => {
       <TitleHeader
         title="Report a website issue"
         subtitle="We're here to help"
-        backgroundImage="img/code-legal.jpg"
+        backgroundImage="img/error.jpg"
       />
 
       <ReusableSection 

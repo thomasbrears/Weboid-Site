@@ -33,7 +33,8 @@ const TitleHeader = ({ title, subtitle, backgroundImage }) => {
             backgroundSize: "cover",
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
-            height: "40vh",
+            height: "50vh",
+            marginTop: "-2rem",
           }}
         >
           <div className="bg-black bg-opacity-50 h-full flex flex-col justify-center">

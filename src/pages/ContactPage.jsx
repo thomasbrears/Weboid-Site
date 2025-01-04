@@ -21,7 +21,7 @@ const ContactPage = () => {
       <TitleHeader
         title="Get in Touch"
         subtitle="Reach out to the Weboid team with any questions you may have"
-        backgroundImage="img/error.jpg"
+        backgroundImage="img/old-phone-cover.jpg"
       />        
 
         {/* Contact Section */}

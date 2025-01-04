@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, Navigate } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async'; // HelmetProvider for dynamicly setting page head including titles
 import { ThemeProvider } from './ThemeContext';
@@ -21,6 +21,7 @@ import Footer from './components/Footer';
 import FooterCTASection from './components/FooterCTASection';
 import Navbar from './components/NavBar';
 import CustomNotification from './components/CustomNotification';
+import ExternalRedirect from './components/ExternalRedirect';
 //import Loading from './components/Loading';
 
 // Global style sheet
@@ -77,6 +78,14 @@ const App = () => {
         <Navbar />
         <ToastContainer/>
           <Routes>
+            {/* External Link Redirect */}
+            <Route path="/status" element={<ExternalRedirect url="https://weboid.statuspage.io" />} />
+            <Route path="/call" element={<ExternalRedirect url="https://cal.com/webooid" />} />
+
+            {/* Internal link redirects */}
+            <Route path="/proposal" element={<Navigate to="/pricing#proposal" />} />
+
+            {/* pages */}  
             <Route path="*" element={<NotFoundPage />} />
             <Route path="/" element={<HomePage />} />
             <Route path="/pricing" element={<PricingPage />} />

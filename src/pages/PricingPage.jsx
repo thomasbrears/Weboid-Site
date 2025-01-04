@@ -21,7 +21,7 @@ const PricingPage = () => {
       <TitleHeader
         title="Our Pricing"
         subtitle="Utu hoko"
-        backgroundImage="img/code-legal.jpg"
+        backgroundImage="img/pricing.webp"
       />
 
       {/* Pricing First Section */}

@@ -113,13 +113,13 @@ const Footer = () => {
                 <li>
                   <a href="https://weboid.freshdesk.com/support/solutions/articles/51000372062-cookie-notice" rel="noreferrer" target="_blank" className="hover:text-blue-600 transition-colors duration-200">Cookie Policy</a>
                 </li>
-                <li>
-                  <a href="https://weboid.freshdesk.com/" rel="noreferrer" target="_blank" className="hover:text-blue-600 transition-colors duration-200">Support Portal</a>
-                </li>
               </ul>
             </div>
           </div>
         </div>
+        <p className="text-center text-sm text-gray-900">
+			hello@weboid.dev | Website Developers | 0272690900 | Developing for all of Aotearoa New Zealand - Northland, Whangarei, Auckland, Waikato, Bay of Plenty, Gisborne, Hawke's Bay, Taranaki, Manawatū-Whanganui, Wellington, Tasman, Nelson, Marlborough, West Coast, Canterbury, Otago, Southland, Queenstown and more...
+		  </p>
       </div>
     </footer>
   );
