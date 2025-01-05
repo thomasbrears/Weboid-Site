@@ -77,9 +77,8 @@ const SloganSection = () => {
         <div className="mt-10">
           <Link
             to="/contact"
-            className="text-white bg-blue-600 dark:bg-blue-800 hover:bg-blue-700 dark:hover:bg-blue-600 px-6 py-3 rounded-md font-semibold transition"
-          >
-            Haere mai, let's embark on a web journey like no other!
+            className="text-white bg-blue-600 dark:bg-blue-800 hover:bg-blue-700 dark:hover:bg-blue-600 text-base px-6 py-3 rounded-md block font-semibold transition"
+          >Haere mai, let's embark on a web journey like no other!
           </Link>
         </div>
       </div>
