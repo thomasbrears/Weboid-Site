@@ -59,7 +59,7 @@ const ContactSection = () => {
                     to="https://weboid.freshdesk.com"
                     className="text-white bg-blue-600 hover:bg-blue-700 dark:bg-blue-800 dark:hover:bg-blue-600 px-6 py-3 text-sm rounded-md font-semibold transition"
                   >
-                    Visit our Knowledge Base & Help Centre
+                    Visit our Knowledge Base
                   </Link>
                 ),
               },
@@ -72,7 +72,7 @@ const ContactSection = () => {
                     onClick={openWidget}
                     className="text-white bg-blue-600 hover:bg-blue-700 dark:bg-blue-800 dark:hover:bg-blue-600 px-6 py-3 text-sm rounded-md font-semibold transition"
                   >
-                    Launch Contact Form
+                    Open Contact Form
                   </button>
                 ),
               },
@@ -86,19 +86,19 @@ const ContactSection = () => {
                       href="mailto:hello@weboid.dev"
                       className="inline-flex items-center text-white bg-blue-600 hover:bg-blue-700 dark:bg-blue-800 dark:hover:bg-blue-600 mr-2 text-sm px-6 py-3 rounded-md font-semibold transition"
                     >
-                      General Enquiries
+                      General Enquiries (Hello@weboid.dev)
                     </a>
                     <a
                       href="mailto:support@weboid.dev"
                       className="inline-flex items-center text-white bg-blue-600 hover:bg-blue-700 dark:bg-blue-800 dark:hover:bg-blue-600 mr-2 text-sm px-6 py-3 rounded-md font-semibold transition"
                     >
-                      Support
+                      Support (Support@weboid.dev)
                     </a>
                     <a
                       href="mailto:accounts@weboid.dev"
                       className="inline-flex items-center text-white bg-blue-600 hover:bg-blue-700 dark:bg-blue-800 dark:hover:bg-blue-600 text-sm px-6 py-3 rounded-md font-semibold transition"
                     >
-                      Billing & Accounts
+                      Billing & Accounts (Accounts@weboid.dev)
                     </a>
                   </div>
                 ),
@@ -112,7 +112,7 @@ const ContactSection = () => {
                     href="tel:+64272690900"
                     className="inline-flex items-center text-white bg-blue-600 hover:bg-blue-700 dark:bg-blue-800 dark:hover:bg-blue-600 mr-2 text-sm px-6 py-3 rounded-md font-semibold transition"
                   >
-                    +64272690900
+                    Call us (+64272690900)
                   </a>
                 ),
               },

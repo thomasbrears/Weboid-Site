@@ -22,6 +22,7 @@ import FooterCTASection from './components/FooterCTASection';
 import Navbar from './components/NavBar';
 import CustomNotification from './components/CustomNotification';
 import ExternalRedirect from './components/ExternalRedirect';
+import ScrollToTop from './components/ScrollToTop';
 //import Loading from './components/Loading';
 
 // Global style sheet
@@ -75,6 +76,7 @@ const App = () => {
             pauseOnFocusLoss={false} // Keep toast running even when focus is lost
           />
         <Router>
+        <ScrollToTop />
         <Navbar />
         <ToastContainer/>
           <Routes>
