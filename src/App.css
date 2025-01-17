@@ -37,7 +37,7 @@
   }
 }
 
-/* Use Mangaka for all titles */
+/* Use Ahkio for all titles */
 .text-3xl, .text-4xl, .text-5xl {
   @apply font-title;
 }

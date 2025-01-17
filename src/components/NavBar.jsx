@@ -48,30 +48,36 @@ const Navbar = () => {
         className={`fixed w-full transition-all duration-300 z-50 ${visible ? 'translate-y-0' : '-translate-y-full'}`}
       >
         <div
-          className={`transition-all duration-300 ${isAtTop
-            ? theme === 'light'
-              ? 'bg-white h-24 md:h-28' // Light mode at the top
-              : 'bg-black h-24 md:h-28' // Dark mode at the top
-            : theme === 'light'
-            ? 'bg-white shadow-lg h-16 md:h-20' // White background with shadow when scrolling in light mode
-            : 'bg-black shadow-lg h-16 md:h-20' // Black background with shadow when scrolling in dark mode
+          className={`transition-all duration-300 ${
+            isAtTop
+              ? theme === 'light'
+                ? 'bg-white h-20 md:h-24'
+                : 'bg-black h-20 md:h-24'
+              : theme === 'light'
+              ? 'bg-white shadow-lg h-12 md:h-16'
+              : 'bg-black shadow-lg h-12 md:h-16'
           }`}
         >
+          
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full">
             <div className="flex justify-between items-center h-full">
               {/* Logo Section */}
               <div className="flex-shrink-0 transition-all duration-300">
                 <Link to="/" className="block">
                   <img
-                    src={theme === 'dark' ? "img/white_trans.png" : "img/black_trans.png"}
+                    src={theme === 'dark' ? "img/Logo25-WhiteTEXT-TransBG.png" : "img/Logo25-BlackTEXT-TransBG.png"}
                     alt="Weboid Logo"
-                    className={`transition-all duration-300 ${isAtTop ? 'h-16 w-16 md:h-24 md:w-24' : 'h-12 w-12 md:h-16 md:w-16'}`}
+                    className="transition-all duration-300"
+                    style={{
+                      width: isAtTop ? '190px' : '150px',
+                      height: 'auto', 
+                    }}
                   />
                 </Link>
               </div>
 
               {/* Desktop Navigation */}
-              <div className="hidden md:flex items-center space-x-8">
+              <div className="hidden md:flex items-center space-x-2">
                 <Link to="/" className={`px-3 py-2 rounded-md transition-colors duration-200 ${textColor} hover:text-blue-600`}>Home</Link>
                 <Link to="/#about" className={`px-3 py-2 rounded-md transition-colors duration-200 ${textColor} hover:text-blue-600`}>About</Link>
                 <Link to="/services" className={`px-3 py-2 rounded-md transition-colors duration-200 ${textColor} hover:text-blue-600`}>Services</Link>

@@ -11,17 +11,13 @@ const Footer = () => {
       {/* Main Footer Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {/* Company Info */}
           <div className="space-y-4">
             <div className="flex items-center space-x-3">
               <img 
-                src="img/white_trans.png" 
+                src="img/Logo25-WhiteTEXT-TransBG.png" 
                 alt="Weboid Logo" 
                 className="h-20 w-auto"
               />
-              <h2 className="text-white text-2xl font-SemiBold">
-                WEBOID
-              </h2>
             </div>
             <p className="text-sm">
               Welcome to Weboid, where we specialize in crafting tailored websites that captivate your audience and drive desired actions. With our expert team and dedication to your success, we'll create a website that embodies your brand and empowers your online presence. Our goal is to make the website design process seamless and stress-free for you.
@@ -89,6 +85,11 @@ const Footer = () => {
                 <span><a className="hover:text-blue-600 transition-colors duration-200" rel="noreferrer" href="/contact">Contact us</a></span>
               </li>
             </ul>
+
+            {/* Design Rush Link */}
+            <a href="https://www.designrush.com/agency/profile/weboid" rel="noreferrer" target="_blank" className="hover:text-white transition-colors duration-200"
+              ><img src="img/designrush2023.png" alt="Design Rush Profile" className="pt-5 h-20 w-15" />
+              </a>
           </div>
         </div>
       </div>
@@ -113,6 +114,11 @@ const Footer = () => {
                 <li>
                   <a href="https://weboid.freshdesk.com/support/solutions/articles/51000372062-cookie-notice" rel="noreferrer" target="_blank" className="hover:text-blue-600 transition-colors duration-200">Cookie Policy</a>
                 </li>
+
+                <a href="#" rel="noreferrer" className="hover:text-white transition-colors duration-200"
+                ><img src="img/WIcon25-White-TransBG.svg" alt="Weboid" className="h-auto w-7" />
+                </a>
+
               </ul>
             </div>
           </div>

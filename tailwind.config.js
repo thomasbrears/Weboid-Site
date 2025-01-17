@@ -5,7 +5,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        title: ['Mangaka', 'sans-serif'], // Add Mangaka font for titles
+        title: ['Ahkio', 'sans-serif'], // Add Ahkio font for titles
         body: ['Open Sans', 'sans-serif'], // Use Open Sans for body text
       },
     },

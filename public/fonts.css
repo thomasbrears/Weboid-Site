@@ -1,8 +1,8 @@
 @font-face {
-    font-family: 'Mangaka';
-    src: url('/fonts/mangaka-webfont.woff2') format('woff2'),
-         url('/fonts/mangaka-webfont.woff') format('woff'),
-         url('/fonts/Mangaka.ttf') format('opentype');
+    font-family: 'Ahkio';
+    src: url('/fonts/Ahkio-Regular.woff2') format('woff2'),
+         url('/fonts/Ahkio-Regular.woff') format('woff'),
+         url('/fonts/Ahkio-Regular.ttf') format('opentype');
     font-weight: normal;
     font-style: normal;
   }
