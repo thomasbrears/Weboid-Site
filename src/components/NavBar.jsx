@@ -65,7 +65,7 @@ const Navbar = () => {
               <div className="flex-shrink-0 transition-all duration-300">
                 <Link to="/" className="block">
                   <img
-                    src={theme === 'dark' ? "img/Logo25-WhiteTEXT-TransBG.png" : "img/Logo25-BlackTEXT-TransBG.png"}
+                    src={theme === 'dark' ? "/img/Logo25-WhiteTEXT-TransBG.png" : "/img/Logo25-BlackTEXT-TransBG.png"}
                     alt="Weboid Logo"
                     className="transition-all duration-300"
                     style={{
@@ -82,6 +82,7 @@ const Navbar = () => {
                 <Link to="/#about" className={`px-3 py-2 rounded-md transition-colors duration-200 ${textColor} hover:text-blue-600`}>About</Link>
                 <Link to="/services" className={`px-3 py-2 rounded-md transition-colors duration-200 ${textColor} hover:text-blue-600`}>Services</Link>
                 <Link to="/contact" className={`px-3 py-2 rounded-md transition-colors duration-200 ${textColor} hover:text-blue-600`}>Contact</Link>
+                <Link to="/support" className={`px-3 py-2 rounded-md transition-colors duration-200 ${textColor} hover:text-blue-600`}>Knowledge Base</Link>
                 <Link to="/pricing" className={`px-3 py-2 rounded-md transition-colors duration-200 ${textColor} hover:text-blue-600`}>Pricing</Link>
                 <Link to="/pricing#proposal" className={`px-3 py-2 rounded-md transition-colors duration-200 ${textColor} hover:text-blue-600`}>Propsoal</Link>
                 <Link to="/portfolio" className={`px-3 py-2 rounded-md transition-colors duration-200 ${textColor} hover:text-blue-600`}>Portfolio</Link>

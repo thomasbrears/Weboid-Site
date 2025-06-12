@@ -14,7 +14,7 @@ const Footer = () => {
           <div className="space-y-4">
             <div className="flex items-center space-x-3">
               <img 
-                src="img/Logo25-WhiteTEXT-TransBG.png" 
+                src="/img/Logo25-WhiteTEXT-TransBG.png" 
                 alt="Weboid Logo" 
                 className="h-20 w-auto"
               />
@@ -88,7 +88,7 @@ const Footer = () => {
 
             {/* Design Rush Link */}
             <a href="https://www.designrush.com/agency/profile/weboid" rel="noreferrer" target="_blank" className="hover:text-white transition-colors duration-200"
-              ><img src="img/designrush2023.png" alt="Design Rush Profile" className="pt-5 h-20 w-15" />
+              ><img src="/img/DesignRushBlue.png" alt="Design Rush Profile" className="pt-5 h-20 w-15" />
               </a>
           </div>
         </div>
@@ -116,7 +116,7 @@ const Footer = () => {
                 </li>
 
                 <a href="#" rel="noreferrer" className="hover:text-white transition-colors duration-200"
-                ><img src="img/WIcon25-White-TransBG.svg" alt="Weboid" className="h-auto w-7" />
+                ><img src="/img/WIcon25-White-TransBG.svg" alt="Weboid" className="h-auto w-7" />
                 </a>
 
               </ul>

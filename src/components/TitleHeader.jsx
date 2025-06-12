@@ -1,11 +1,11 @@
 import React from "react";
 import { useLocation, Link } from "react-router-dom";
 
-const TitleHeader = ({ title, subtitle, backgroundImage }) => {
+const TitleHeader = ({ title, subtitle, backgroundImage, customBreadcrumbs }) => {
     const location = useLocation();
   
-    // Generate breadcrumbs based on the URL path
-    const breadcrumbs = location.pathname
+    // Generate breadcrumbs based on the URL path or use custom ones
+    const breadcrumbs = customBreadcrumbs || location.pathname
       .split("/")
       .filter(Boolean)
       .map((path, index, arr) => {
@@ -48,36 +48,39 @@ const TitleHeader = ({ title, subtitle, backgroundImage }) => {
         </div>
   
         {/* Breadcrumbs */}
-      <div className="bg-gray-100 dark:bg-black">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
-          <nav aria-label="Breadcrumb" className="text-sm text-gray-500 dark:text-gray-300">
-            <ol className="flex items-center space-x-2">
-              <li>
-                <Link to="/" className="hover:underline text-gray-600 dark:text-gray-200">
-                  Home
-                </Link>
-              </li>
-              {breadcrumbs.map((crumb, index) => (
-                <li key={index} className="flex items-center">
-                  <span className="mx-2 text-gray-400 dark:text-gray-500">/</span>
-                  {crumb.isLast ? (
-                    <span className="text-gray-600 dark:text-gray-300">{crumb.label}</span>
-                  ) : (
-                    <Link
-                      to={crumb.href}
-                      className="hover:underline text-gray-600 dark:text-gray-200"
-                    >
-                      {crumb.label}
-                    </Link>
-                  )}
+        <div className="bg-gray-100 dark:bg-black">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+            <nav aria-label="Breadcrumb" className="text-sm text-gray-500 dark:text-gray-300">
+              <ol className="flex items-center space-x-2 flex-wrap">
+                <li>
+                  <Link to="/" className="hover:underline text-gray-600 dark:text-gray-200">
+                    Home
+                  </Link>
                 </li>
-              ))}
-            </ol>
-          </nav>
+                {breadcrumbs.map((crumb, index) => (
+                  <li key={index} className="flex items-center">
+                    <span className="mx-2 text-gray-400 dark:text-gray-500">/</span>
+                    {crumb.isLast || !crumb.href ? (
+                      <span className="text-gray-600 dark:text-gray-300 line-clamp-1" title={crumb.label}>
+                        {crumb.label.length > 50 ? `${crumb.label.substring(0, 50)}...` : crumb.label}
+                      </span>
+                    ) : (
+                      <Link
+                        to={crumb.href}
+                        className="hover:underline text-gray-600 dark:text-gray-200 line-clamp-1"
+                        title={crumb.label}
+                      >
+                        {crumb.label.length > 30 ? `${crumb.label.substring(0, 30)}...` : crumb.label}
+                      </Link>
+                    )}
+                  </li>
+                ))}
+              </ol>
+            </nav>
+          </div>
         </div>
       </div>
-    </div>
-  );
+    );
 };
 
 export default TitleHeader;

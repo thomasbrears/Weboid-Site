@@ -15,7 +15,7 @@ const NotFoundPage = () => {
         
         {/* 404 Error Image */}
         <img
-          src="img/404img.png"
+          src="/img/404img.png"
           alt="404 Error"
           className="mt-20 w-full md:w-1/2 max-w-md mb-6 md:mb-0"
         />

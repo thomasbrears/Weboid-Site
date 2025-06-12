@@ -40,7 +40,7 @@ const FooterCTASection = () => {
             variants={itemVariants}
           >
             <img 
-              src="img/WIcon25-White-TransBG.svg" 
+              src="/img/WIcon25-White-TransBG.svg" 
               alt="Weboid Logo" 
               className="h-11 w-auto"
             />

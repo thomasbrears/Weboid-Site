@@ -33,7 +33,7 @@ const Home = () => {
         Website design and development can often be a complex and overwhelming process. However, at Weboid, we take care of the critical details, so you can concentrate on what matters most – your business. We steer clear of technical jargon and provide you with the information and guidance you need to achieve your business goals and maximize the potential of your online presence.
         Our goal is to make the website design process as seamless and stress-free as possible for you. We listen to your requirements, pay attention to every detail, and guide you through the process, ensuring that your website reflects your brand, resonates with your target audience, and propels your success.
         With Weboid, you can trust that we are fully invested in your project. We go above and beyond to deliver exceptional results and provide ongoing support to ensure that your online presence continues to thrive. Choose Weboid and experience the dedication and expertise that sets us apart. Contact us today, and let's create a website that truly represents your business, inspires and engages visitors, and helps you achieve your goals"
-        image={{ src: "img/welcome.jpg", isSideImage: true }}
+        image={{ src: "/img/welcome.jpg", isSideImage: true }}
         buttonText="Learn More"
         buttonLink="/services"
       />

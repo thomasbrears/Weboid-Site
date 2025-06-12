@@ -50,7 +50,7 @@ const ProposalsSection = () => {
           </div>
           <div className="flex-1">
             <motion.img
-              src="img/proposal-cover1.png"
+              src="/img/proposal-cover1.png"
               alt="Proposal Example"
               className="w-full max-h-80 object-cover rounded-lg shadow-lg"
               whileHover={{ scale: 1.05 }}
@@ -68,7 +68,7 @@ const ProposalsSection = () => {
         >
           <div className="flex-1">
             <motion.img
-              src="img/proposal-edit.png"
+              src="/img/proposal-edit.png"
               alt="Custom Proposal"
               className="w-full max-h-80 object-cover rounded-lg shadow-lg"
               whileHover={{ scale: 1.05 }}

@@ -56,7 +56,7 @@ const ContactSection = () => {
                 description: "Explore our resources and find answers to common questions.",
                 link: (
                   <Link
-                    to="https://weboid.freshdesk.com"
+                    to="/support/"
                     className="text-white bg-blue-600 hover:bg-blue-700 dark:bg-blue-800 dark:hover:bg-blue-600 px-6 py-3 text-sm rounded-md font-semibold transition"
                   >
                     Visit our Knowledge Base
@@ -66,14 +66,14 @@ const ContactSection = () => {
               {
                 icon: <FaEnvelope />,
                 title: "Flick Us a Message",
-                description: "Send us your message using the contact us form.",
+                description: "Send us your message using our ticket form.",
                 link: (
-                  <button
-                    onClick={openWidget}
-                    className="text-white bg-blue-600 hover:bg-blue-700 dark:bg-blue-800 dark:hover:bg-blue-600 px-6 py-3 text-sm rounded-md font-semibold transition"
+                  <a 
+                    href="/support/ticket"
+                    className="inline-flex items-center text-white bg-blue-600 hover:bg-blue-700 dark:bg-blue-800 dark:hover:bg-blue-600 mr-2 text-sm px-6 py-3 rounded-md font-semibold transition"
                   >
-                    Open Contact Form
-                  </button>
+                    Create a Ticket
+                  </a>
                 ),
               },
               {

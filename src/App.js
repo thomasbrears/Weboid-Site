@@ -15,6 +15,9 @@ import ServicesPage from './pages/ServicesPage';
 import NotFoundPage from './pages/errorpages/NotFoundPage';
 import PortfolioPage from './pages/PortfolioPage';
 import ReportErrorPage from './pages/ReportErrorPage';
+import KnowledgeBase from './pages/KnowledgeBase';
+import ArticlePage from './pages/ArticlePage';
+import TicketPage from './pages/TicketPage';
 
 // components
 import Footer from './components/Footer';
@@ -86,6 +89,9 @@ const App = () => {
 
             {/* Internal link redirects */}
             <Route path="/proposal" element={<Navigate to="/pricing#proposal" />} />
+            <Route path="/helpdesk" element={<Navigate to="/support" />} />
+            <Route path="/help" element={<Navigate to="/support" />} />
+            <Route path="/support/article" element={<Navigate to="/support" />} />
 
             {/* pages */}  
             <Route path="*" element={<NotFoundPage />} />
@@ -95,6 +101,11 @@ const App = () => {
             <Route path="/services" element={<ServicesPage />} />
             <Route path="/portfolio" element={<PortfolioPage />} />
             <Route path="/report-error" element={<ReportErrorPage />} />
+
+            {/* Support Pages */}
+            <Route path="/support" element={<KnowledgeBase />} />
+            <Route path="/support/article/:id" element={<ArticlePage />} />
+            <Route path="/support/ticket" element={<TicketPage />} />
           </Routes>
           <FooterCTASection />
           <Footer />

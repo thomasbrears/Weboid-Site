@@ -18,7 +18,7 @@ const PortfolioPage = () => {
       <TitleHeader
         title="Our work"
         subtitle="Portfolio"
-        backgroundImage="img/general-cover.jpg"
+        backgroundImage="/img/general-cover.jpg"
       />
 
       <ReusableSection
