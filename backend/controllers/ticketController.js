@@ -8,11 +8,11 @@ let ticketIdCounter = 1;
 
 const COLLECTION_NAME = 'tickets';
 
-// Helper function to generate random 3-digit ticket number
+// Helper function to generate random 3-digit ticket number with "ticket-" prefix
 const generateTicketNumber = () => {
   // Generate random number between 100 and 999 (inclusive)
   const randomNumber = Math.floor(Math.random() * 900) + 100;
-  return randomNumber.toString();
+  return `ticket-${randomNumber}`;
 };
 
 // Helper function to check if ticket number already exists
@@ -47,8 +47,9 @@ const generateUniqueTicketNumber = async (maxAttempts = 10) => {
   }
   
   // If we can't find a unique number after maxAttempts, fall back to timestamp-based
-  console.warn('Could not generate unique 3-digit ticket number, falling back to timestamp');
-  return (Date.now() % 1000).toString().padStart(3, '0');
+  console.warn('Could not generate unique ticket number, falling back to timestamp');
+  const timestamp = (Date.now() % 1000).toString().padStart(3, '0');
+  return `ticket-${timestamp}`;
 };
 
 // Helper function to convert Firestore timestamp to ISO string
@@ -88,9 +89,9 @@ const queryToArray = (querySnapshot) => {
 const getPriorityFlag = (priority) => {
   switch (priority?.toLowerCase()) {
     case 'urgent':
-      return 'URGENT ';
+      return '🚨 URGENT ';
     case 'high':
-      return ' HIGH PRIORITY ';
+      return '⚡ HIGH PRIORITY ';
     default:
       return '';
   }
@@ -131,7 +132,7 @@ const ticketController = {
     }
   },
 
-  // Get single ticket by Firebase ID or ticket number
+  // Get single ticket by Firebase ID or ticket number (supports both ticket-123 and legacy 123 formats)
   async getTicket(req, res) {
     try {
       const { id } = req.params;
@@ -142,10 +143,18 @@ const ticketController = {
         // First try to get by Firebase document ID
         doc = await db.collection(COLLECTION_NAME).doc(id).get();
         
-        // If not found and ID is 3 digits, search by ticket_number field
-        if (!doc.exists && /^\d{3}$/.test(id)) {
+        // If not found, try searching by ticket number
+        if (!doc.exists) {
+          let searchTicketNumber = id;
+          
+          // Handle both formats: "ticket-123" and legacy "123"
+          if (/^\d{3}$/.test(id)) {
+            // Legacy format: convert "123" to "ticket-123"
+            searchTicketNumber = `ticket-${id}`;
+          }
+          
           const snapshot = await db.collection(COLLECTION_NAME)
-            .where('ticket_number', '==', id)
+            .where('ticket_number', '==', searchTicketNumber)
             .limit(1)
             .get();
           
@@ -167,7 +176,9 @@ const ticketController = {
       
       // Fallback to in-memory storage
       const ticket = tickets.find(t => 
-        t.id === parseInt(id) || t.ticketNumber === id
+        t.id === parseInt(id) || 
+        t.ticketNumber === id ||
+        t.ticketNumber === `ticket-${id}` // Support legacy format
       );
       if (!ticket) {
         return res.status(404).json({
@@ -205,7 +216,7 @@ const ticketController = {
         });
       }
 
-      // Generate unique 3-digit ticket number
+      // Generate unique ticket number with "ticket-" prefix
       const ticketNumber = await generateUniqueTicketNumber();
 
       const newTicket = {
@@ -288,7 +299,7 @@ const ticketController = {
 
           // Send internal notification to support team
           const priorityFlag = getPriorityFlag(createdTicket.priority);
-          const internalSubject = `${priorityFlag}New Ticket #${displayTicketNumber} - ${createdTicket.title}`;
+          const internalSubject = `${priorityFlag}New Support Ticket #${displayTicketNumber} - ${createdTicket.title}`;
           const internalBodyContent = `
             New support ticket submitted:
 
@@ -358,10 +369,17 @@ const ticketController = {
         docRef = db.collection(COLLECTION_NAME).doc(id);
         doc = await docRef.get();
         
-        // If not found and ID is 3 digits, search by ticket_number field
-        if (!doc.exists && /^\d{3}$/.test(id)) {
+        // If not found, try searching by ticket number
+        if (!doc.exists) {
+          let searchTicketNumber = id;
+          
+          // Handle both formats: "ticket-123" and legacy "123"
+          if (/^\d{3}$/.test(id)) {
+            searchTicketNumber = `ticket-${id}`;
+          }
+          
           const snapshot = await db.collection(COLLECTION_NAME)
-            .where('ticket_number', '==', id)
+            .where('ticket_number', '==', searchTicketNumber)
             .limit(1)
             .get();
           
@@ -437,7 +455,7 @@ const ticketController = {
 
             // Send internal update notification to support team
             const priorityFlag = getPriorityFlag(updatedTicket.priority);
-            const internalSubject = `${priorityFlag}Ticket Update #${displayTicketNumber} - Status: ${updatedTicket.status}`;
+            const internalSubject = `${priorityFlag}Support Ticket Update #${displayTicketNumber} - Status: ${updatedTicket.status}`;
             const internalBodyContent = `
               Support ticket updated:
 
@@ -479,7 +497,9 @@ const ticketController = {
 
       // Fallback to in-memory storage
       const ticketIndex = tickets.findIndex(t => 
-        t.id === parseInt(id) || t.ticketNumber === id
+        t.id === parseInt(id) || 
+        t.ticketNumber === id ||
+        t.ticketNumber === `ticket-${id}` // Support legacy format
       );
       if (ticketIndex === -1) {
         return res.status(404).json({
@@ -547,9 +567,9 @@ const ticketController = {
             []    // ccEmails
           );
 
-          // Send internal update notification to support team - SIMPLIFIED TEXT VERSION
+          // Send internal update notification to support team
           const priorityFlag = getPriorityFlag(updatedTicket.priority);
-          const internalSubject = `${priorityFlag}Ticket Update #${displayTicketNumber} - Status: ${updatedTicket.status}`;
+          const internalSubject = `${priorityFlag}Support Ticket Update #${displayTicketNumber} - Status: ${updatedTicket.status}`;
           const internalBodyContent = `
             Support ticket updated:
 
@@ -610,10 +630,17 @@ const ticketController = {
         docRef = db.collection(COLLECTION_NAME).doc(id);
         doc = await docRef.get();
         
-        // If not found and ID is 3 digits, search by ticket_number field
-        if (!doc.exists && /^\d{3}$/.test(id)) {
+        // If not found, try searching by ticket number
+        if (!doc.exists) {
+          let searchTicketNumber = id;
+          
+          // Handle both formats: "ticket-123" and legacy "123"
+          if (/^\d{3}$/.test(id)) {
+            searchTicketNumber = `ticket-${id}`;
+          }
+          
           const snapshot = await db.collection(COLLECTION_NAME)
-            .where('ticket_number', '==', id)
+            .where('ticket_number', '==', searchTicketNumber)
             .limit(1)
             .get();
           
@@ -642,7 +669,9 @@ const ticketController = {
 
       // Fallback to in-memory storage
       const ticketIndex = tickets.findIndex(t => 
-        t.id === parseInt(id) || t.ticketNumber === id
+        t.id === parseInt(id) || 
+        t.ticketNumber === id ||
+        t.ticketNumber === `ticket-${id}` // Support legacy format
       );
       if (ticketIndex === -1) {
         return res.status(404).json({

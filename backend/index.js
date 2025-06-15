@@ -7,16 +7,18 @@ dotenv.config();
 
 // Import routes
 import ticketRoutes from './routes/ticketRoutes.js';
+import contactRoutes from './routes/contactRoutes.js';
 
 const app = express();
 const PORT = process.env.PORT || 8000;
 
-// dynamic cors (v1.1)
+// Cors policy (v1.2)
 const corsOptions = {
   origin: (origin, callback) => {
     // List of allowed origins
     const allowedOrigins = [
       'https://weboid.dev',
+      'https://www.weboid.dev',
       'https://weboidev.vercel.app'
     ];
 
@@ -65,6 +67,7 @@ app.get('/api/health', (req, res) => {
 
 // API Routes
 app.use('/api/tickets', ticketRoutes);
+app.use('/api/contacts', contactRoutes);
 
 // Error handling middleware
 app.use((err, req, res, next) => {
