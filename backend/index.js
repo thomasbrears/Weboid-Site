@@ -12,12 +12,13 @@ import contactRoutes from './routes/contactRoutes.js';
 const app = express();
 const PORT = process.env.PORT || 8000;
 
-// dynamic cors (v1.1)
+// Cors policy (v1.2)
 const corsOptions = {
   origin: (origin, callback) => {
     // List of allowed origins
     const allowedOrigins = [
       'https://weboid.dev',
+      'https://www.weboid.dev',
       'https://weboidev.vercel.app'
     ];
 
