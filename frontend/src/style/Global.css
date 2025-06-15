@@ -139,3 +139,192 @@ body {
     font-size: 1.25rem;
   }
 }
+
+/* Support Widget Styles */
+@keyframes support-widget-slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.support-widget-animate {
+  animation: support-widget-slide-up 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Support Widget Z-index - Ensure it's above other elements */
+.support-widget {
+  z-index: 9999 !important;
+}
+
+/* Custom scrollbar styling */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: linear-gradient(to bottom, #f8fafc, #f1f5f9);
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #cbd5e1, #94a3b8);
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, #94a3b8, #64748b);
+}
+
+/* Dark mode scrollbar */
+.dark .custom-scrollbar::-webkit-scrollbar-track {
+  background: linear-gradient(to bottom, #374151, #4b5563);
+}
+
+.dark .custom-scrollbar::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #6b7280, #9ca3af);
+  border: 1px solid #4b5563;
+}
+
+.dark .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, #9ca3af, #d1d5db);
+}
+
+/* Enhanced hover effects */
+.support-widget .group:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.dark .support-widget .group:hover {
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* Gradient animations for icons */
+.support-widget .bg-gradient-to-br:hover {
+  animation: gradient-shift 0.3s ease-in-out;
+}
+
+@keyframes gradient-shift {
+  0% { filter: brightness(1) saturate(1); }
+  50% { filter: brightness(1.1) saturate(1.2); }
+  100% { filter: brightness(1) saturate(1); }
+}
+
+/* Floating button pulse effect */
+.support-widget button.animate-pulse {
+  animation: support-pulse 2s infinite;
+}
+
+@keyframes support-pulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 10px rgba(59, 130, 246, 0);
+  }
+}
+
+/* Green dot animation */
+@keyframes ping {
+  75%, 100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+.animate-ping {
+  animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .support-widget {
+    bottom: 8px;
+    right: 8px;
+  }
+  
+  /* Make widget narrower on mobile */
+  .support-widget .w-\[28rem\] {
+    width: calc(100vw - 24px);
+    max-width: 380px;
+  }
+  
+  /* Adjust button on mobile */
+  .support-widget > button span {
+    font-size: 0.875rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .support-widget .w-\[28rem\] {
+    width: calc(100vw - 16px);
+    max-width: 340px;
+  }
+  
+  /* Hide text on very small screens */
+  .support-widget > button span {
+    display: none;
+  }
+  
+  .support-widget > button {
+    padding: 16px;
+    border-radius: 50%;
+  }
+}
+
+/* Height adjustments for different screen sizes */
+@media (max-height: 600px) {
+  .support-widget .max-h-\[40rem\] {
+    max-height: calc(100vh - 100px);
+  }
+  
+  .support-widget .max-h-\[32rem\] {
+    max-height: calc(100vh - 180px);
+  }
+}
+
+/* Focus styles for accessibility */
+.support-widget button:focus,
+.support-widget a:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5);
+}
+
+/* Backdrop blur support */
+@supports (backdrop-filter: blur(12px)) {
+  .support-widget .backdrop-blur-sm {
+    backdrop-filter: blur(12px);
+  }
+}
+
+/* Print styles - hide widget when printing */
+@media print {
+  .support-widget {
+    display: none !important;
+  }
+}
+
+/* Smooth transitions for all interactive elements */
+.support-widget * {
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Badge animations */
+.support-widget .group:hover [class*="bg-blue-100"],
+.support-widget .group:hover [class*="bg-green-100"] {
+  transform: scale(1.05);
+  transition: transform 0.2s ease;
+}
+
+/* Icon container hover effects */
+.support-widget .group:hover .bg-gradient-to-br {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}

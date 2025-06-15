@@ -4,11 +4,6 @@ import { FaEnvelope, FaPhone, FaCalendarAlt, FaFileAlt } from "react-icons/fa"; 
 import { motion } from "framer-motion";
 
 const ContactSection = () => {
-  // Function to open the Freshdesk widget
-  const openWidget = () => {
-    window.FreshworksWidget("open", "ticketForm");
-  };
-
   // Animation variants
   const cardVariants = {
     hidden: { opacity: 0, y: 50 },
