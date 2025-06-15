@@ -27,6 +27,7 @@ import Navbar from './components/NavBar';
 import CustomNotification from './components/CustomNotification';
 import ExternalRedirect from './components/ExternalRedirect';
 import ScrollToTop from './components/ScrollToTop';
+import SupportWidget from './components/SupportWidget';
 //import Loading from './components/Loading';
 
 // Global style sheet
@@ -118,6 +119,9 @@ const AppContent = () => {
         
         <FooterCTASection />
         <Footer />
+
+        {/* Support Widget */}
+        <SupportWidget />
     </>
   );
 };
