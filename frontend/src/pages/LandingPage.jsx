@@ -2,6 +2,7 @@ import { FaChevronDown, FaCode, FaUsers, FaCheckCircle, FaArrowRight, FaGlobe, F
 import { FaBoltLightning } from "react-icons/fa6";
 import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
+import contactService from '../api/contactService.js';
 
 const LandingPage = () => {
   const [theme, setTheme] = useState('dark');
@@ -17,6 +18,7 @@ const LandingPage = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState('');
 
   const toggleTheme = () => {
     setTheme(theme === 'dark' ? 'light' : 'dark');
@@ -53,25 +55,39 @@ const LandingPage = () => {
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setSubmitError('');
     
-    // Simulate API call
-    setTimeout(() => {
+    try {
+      // Call the API
+      const response = await contactService.createWebsiteAssessment(formData);
+      
+      if (response.success) {
+        setIsSubmitted(true);
+        // Reset form after 5 seconds
+        setTimeout(() => {
+          setIsSubmitted(false);
+          setFormData({
+            name: '',
+            email: '',
+            phone: '',
+            business: '',
+            currentWebsite: '',
+            challenges: '',
+            goals: ''
+          });
+        }, 5000);
+      } else {
+        throw new Error(response.message || 'Failed to submit assessment request');
+      }
+    } catch (error) {
+      console.error('Error submitting website assessment:', error);
+      setSubmitError(
+        error.message || 
+        'Sorry, there was an error submitting your request. Please try calling us directly at +64 27 269 0900.'
+      );
+    } finally {
       setIsSubmitting(false);
-      setIsSubmitted(true);
-      // Reset form after 3 seconds
-      setTimeout(() => {
-        setIsSubmitted(false);
-        setFormData({
-          name: '',
-          email: '',
-          phone: '',
-          business: '',
-          currentWebsite: '',
-          challenges: '',
-          goals: ''
-        });
-      }, 3000);
-    }, 1500);
+    }
   };
 
   const handleInputChange = (e) => {
@@ -79,6 +95,10 @@ const LandingPage = () => {
       ...formData,
       [e.target.name]: e.target.value
     });
+    // Clear any previous errors when user starts typing
+    if (submitError) {
+      setSubmitError('');
+    }
   };
 
   const services = [
@@ -650,6 +670,15 @@ const LandingPage = () => {
               </div>
 
               <div className={`${cardClasses} border rounded-2xl p-8 shadow-xl`}>
+                {submitError && (
+                  <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
+                    <div className="flex items-center">
+                      <FaTimes className="w-5 h-5 text-red-500 mr-2" />
+                      <p className="text-red-700">{submitError}</p>
+                    </div>
+                  </div>
+                )}
+
                 <form onSubmit={handleFormSubmit} className="space-y-6">
                   <div className="grid md:grid-cols-2 gap-6">
                     <div>
@@ -758,7 +787,7 @@ const LandingPage = () => {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className={`w-full py-4 px-6 ${buttonPrimary} rounded-lg font-semibold text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 flex items-center justify-center group disabled:opacity-50 disabled:cursor-not-allowed`}
+                    className={`w-full py-4 px-6 ${buttonPrimary} rounded-lg font-semibold text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 flex items-center justify-center group disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none`}
                   >
                     {isSubmitting ? (
                       <>
@@ -783,7 +812,7 @@ const LandingPage = () => {
               </div>
               <h3 className="text-3xl font-bold mb-4">Thank You!</h3>
               <p className={`${isDark ? 'text-gray-300' : 'text-gray-600'} text-xl mb-8 leading-relaxed`}>
-                I've received your information and I'll call you back within 24 hours to discuss your website needs.
+                I've received your website assessment request and I'll call you back within 24 hours to discuss your needs.
               </p>
               <div className={`${isDark ? 'bg-gray-700' : 'bg-gray-50'} rounded-lg p-6`}>
                 <p className="text-lg font-semibold mb-3">What to expect:</p>

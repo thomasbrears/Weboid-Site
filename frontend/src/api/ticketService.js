@@ -1,4 +1,4 @@
-import apiClient from './apiClient.js';
+import apiClient from './apiClient';
 
 class TicketService {
   async createTicket(ticketData) {

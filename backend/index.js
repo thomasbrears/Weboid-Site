@@ -7,6 +7,7 @@ dotenv.config();
 
 // Import routes
 import ticketRoutes from './routes/ticketRoutes.js';
+import contactRoutes from './routes/contactRoutes.js';
 
 const app = express();
 const PORT = process.env.PORT || 8000;
@@ -65,6 +66,7 @@ app.get('/api/health', (req, res) => {
 
 // API Routes
 app.use('/api/tickets', ticketRoutes);
+app.use('/api/contacts', contactRoutes);
 
 // Error handling middleware
 app.use((err, req, res, next) => {
