@@ -6,7 +6,7 @@ const NotFoundPage = () => {
   return (
     <>
       <Helmet>
-        <title>Error 404 - We coudnt find the page you were looking for | Weboid</title>
+        <title>Error 404 - We couldn't find the page you were looking for | Weboid</title>
       </Helmet>
       
       <div className="flex items-center justify-center h-screen bg-gray-100 dark:bg-gray-800">
