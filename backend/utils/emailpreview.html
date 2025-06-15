@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weboid Email Template Preview</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+        .preview-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .controls {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 6px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+        input, textarea, select {
+            width: 100%;
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        textarea {
+            height: 100px;
+            resize: vertical;
+        }
+        button {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        button:hover {
+            background: #1d4ed8;
+        }
+        .preview-frame {
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            width: 100%;
+            height: 600px;
+            margin-top: 20px;
+        }
+        .device-selector {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        .device-btn {
+            padding: 5px 15px;
+            border: 1px solid #ddd;
+            background: white;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .device-btn.active {
+            background: #2563eb;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="preview-container">
+        <h1>📧 Weboid Email Template Preview</h1>
+        
+        <div class="controls">
+            <div class="form-group">
+                <label for="recipientName">Recipient Name:</label>
+                <input type="text" id="recipientName" value="John Smith" placeholder="Enter recipient name">
+            </div>
+            
+            <div class="form-group">
+                <label for="emailDescription">Email Description:</label>
+                <input type="text" id="emailDescription" value="Account Setup Confirmation" placeholder="Brief description of the email">
+            </div>
+            
+            <div class="form-group">
+                <label for="emailContent">Email Content (HTML):</label>
+                <textarea id="emailContent" placeholder="Enter your email content here...">
+<p>Welcome to Weboid! We're excited to have you join our platform.</p>
+
+<p>Your account has been successfully created and is ready to use. Here are your next steps:</p>
+
+<ul>
+    <li>Complete your profile setup</li>
+    <li>Explore our dashboard</li>
+    <li>Contact support if you need help</li>
+</ul>
+
+<p>If you have any questions, don't hesitate to reach out to our support team.</p>
+
+<a href="#" class="button">Get Started</a>
+                </textarea>
+            </div>
+            
+            <div class="form-group">
+                <label for="templateType">Template Style:</label>
+                <select id="templateType">
+                    <option value="default">Weboid Style (Black Header)</option>
+                </select>
+            </div>
+            
+            <button onclick="updatePreview()">🔄 Update Preview</button>
+            <button onclick="downloadHTML()">💾 Download HTML</button>
+        </div>
+        
+        <div class="device-selector">
+            <button class="device-btn active" onclick="setDevice('desktop')">🖥️ Desktop</button>
+            <button class="device-btn" onclick="setDevice('tablet')">📱 Tablet</button>
+            <button class="device-btn" onclick="setDevice('mobile')">📱 Mobile</button>
+        </div>
+        
+        <iframe id="previewFrame" class="preview-frame"></iframe>
+    </div>
+
+    <script>
+        function generateWeboidEmailTemplate(bodyContent, recipientName = '', emailDescription = '', options = {}) {
+            const {
+                logoUrl = 'https://www.weboid.dev/img/Logo25-WhiteTEXT-TransBG.png', // Always use white text logo
+                logoAlt = 'Weboid',
+                iconUrl = 'https://www.weboid.dev/img/WIcon25-White-TransBG.png',
+                backgroundColor = '#f5f5f5',
+                containerBackgroundColor = '#ffffff',
+                headerBackgroundColor = '#000000', // Always black header
+                footerBackgroundColor = '#111827', // Tailwind gray-900
+                primaryColor = '#2563eb',
+                textColor = '#1f2937',
+                lightTextColor = '#6b7280',
+                footerTextColor = '#d1d5db'
+            } = options;
+
+            const logoToUse = 'https://www.weboid.dev/img/Logo25-WhiteTEXT-TransBG.png'; // Always use white text logo
+
+            return `
+                <!DOCTYPE html>
+                <html>
+                <head>
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <style>
+                        body {
+                            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+                            margin: 0;
+                            padding: 0;
+                            background-color: ${backgroundColor};
+                            line-height: 1.6;
+                        }
+                        .email-container {
+                            background-color: ${containerBackgroundColor};
+                            max-width: 600px;
+                            margin: 20px auto;
+                            border-radius: 8px;
+                            overflow: hidden;
+                            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                        }
+                        .email-header {
+                            background-color: ${headerBackgroundColor};
+                            padding: 30px 30px 20px 30px;
+                            border-bottom: 1px solid #e5e7eb;
+                        }
+                        .header-content {
+                            display: flex;
+                            align-items: center;
+                            justify-content: space-between;
+                            gap: 20px;
+                        }
+                        .logo-container {
+                            flex-shrink: 0;
+                        }
+                        .logo {
+                            max-height: 40px;
+                            width: auto;
+                        }
+                        .description-container {
+                            flex-grow: 1;
+                            text-align: right;
+                        }
+                        .email-description {
+                            color: #d1d5db;
+                            font-size: 14px;
+                            margin: 0;
+                            font-weight: 500;
+                        }
+                        .email-body {
+                            padding: 30px;
+                            color: ${textColor};
+                        }
+                        .greeting {
+                            font-size: 18px;
+                            font-weight: 600;
+                            margin-bottom: 20px;
+                            color: ${textColor};
+                        }
+                        .content {
+                            font-size: 16px;
+                            line-height: 1.6;
+                            margin-bottom: 25px;
+                        }
+                        .content p {
+                            margin: 0 0 15px 0;
+                        }
+                        .content ul, .content ol {
+                            margin: 15px 0;
+                            padding-left: 25px;
+                        }
+                        .content li {
+                            margin-bottom: 8px;
+                        }
+                        .content h1, .content h2, .content h3 {
+                            color: ${textColor};
+                            margin: 25px 0 15px 0;
+                        }
+                        .content h1 {
+                            font-size: 24px;
+                            font-weight: 700;
+                        }
+                        .content h2 {
+                            font-size: 20px;
+                            font-weight: 600;
+                        }
+                        .content h3 {
+                            font-size: 18px;
+                            font-weight: 600;
+                        }
+                        .button {
+                            display: inline-block;
+                            padding: 12px 24px;
+                            margin: 20px 0;
+                            color: #ffffff;
+                            background-color: ${primaryColor};
+                            border-radius: 6px;
+                            text-decoration: none;
+                            font-weight: 600;
+                            font-size: 16px;
+                            transition: background-color 0.2s;
+                        }
+                        .button:hover {
+                            background-color: #1d4ed8;
+                        }
+                        .signature {
+                            margin-top: 30px;
+                            padding-top: 20px;
+                            border-top: 1px solid #e5e7eb;
+                            font-size: 16px;
+                            color: ${textColor};
+                            font-weight: 500;
+                        }
+                        .footer {
+                            background-color: ${footerBackgroundColor};
+                            padding: 25px 30px;
+                            text-align: left;
+                            font-size: 13px;
+                            color: ${footerTextColor};
+                            line-height: 1.5;
+                        }
+                        .footer-section {
+                            margin-bottom: 15px;
+                        }
+                        .company-info {
+                            font-weight: 600;
+                            color: #ffffff;
+                            margin-bottom: 8px;
+                        }
+                        .contact-info {
+                            margin-bottom: 8px;
+                        }
+                        .contact-info a {
+                            color: #60a5fa;
+                            text-decoration: none;
+                        }
+                        .contact-info a:hover {
+                            text-decoration: underline;
+                        }
+                        .disclaimer-section {
+                            margin-top: 20px;
+                            padding-top: 15px;
+                            border-top: 1px solid #374151;
+                        }
+                        .disclaimer {
+                            font-size: 11px;
+                            color: #9ca3af;
+                            line-height: 1.4;
+                            margin-bottom: 15px;
+                        }
+                        .icon-container {
+                            text-align: center;
+                            margin-top: 15px;
+                        }
+                        .footer-icon {
+                            height: 24px;
+                            width: auto;
+                            opacity: 0.7;
+                        }
+                        @media only screen and (max-width: 600px) {
+                            .email-container {
+                                margin: 10px;
+                                border-radius: 4px;
+                            }
+                            .email-header, .email-body, .footer {
+                                padding: 20px;
+                            }
+                            .content {
+                                font-size: 15px;
+                            }
+                            .greeting {
+                                font-size: 17px;
+                            }
+                            .header-content {
+                                flex-direction: column;
+                                align-items: flex-start;
+                                gap: 15px;
+                            }
+                            .description-container {
+                                text-align: left;
+                                width: 100%;
+                            }
+                        }
+                    </style>
+                </head>
+                <body>
+                    <div class="email-container">
+                        <div class="email-header">
+                            <div class="header-content">
+                                <div class="logo-container">
+                                    <img src="${logoToUse}" alt="${logoAlt}" class="logo">
+                                </div>
+                                ${emailDescription ? `
+                                <div class="description-container">
+                                    <p class="email-description">${emailDescription}</p>
+                                </div>` : ''}
+                            </div>
+                        </div>
+                        
+                        <div class="email-body">
+                            ${recipientName ? `<div class="greeting">Kia ora ${recipientName},</div>` : '<div class="greeting">Kia ora,</div>'}
+                            
+                            <div class="content">
+                                ${bodyContent}
+                            </div>
+                            
+                            <div class="signature">
+                                Regards,<br>
+                                <strong>Weboid</strong>
+                            </div>
+                        </div>
+                        
+                        <div class="footer">
+                            <div class="footer-section">
+                                <div class="company-info">Weboid - Aotearoa New Zealand | NZBN 9429050012305</div>
+                                <div class="contact-info">
+                                    <strong>Billing & Accounts:</strong> <a href="mailto:accounts@weboid.dev">accounts@weboid.dev</a><br>
+                                    <strong>Support:</strong> <a href="mailto:support@weboid.dev">support@weboid.dev</a><br>
+                                    <strong>General:</strong> <a href="mailto:hello@weboid.dev">hello@weboid.dev</a>
+                                </div>
+                                <div style="margin-top: 8px; font-size: 12px;">
+                                    You are receiving this email because you have an account with Weboid or have requested information from us.
+                                </div>
+                            </div>
+                            
+                            <div class="disclaimer-section">
+                                <div class="icon-container">
+                                    <img src="${iconUrl}" alt="Weboid Icon" class="footer-icon">
+                                </div>
+                                
+                                <div class="disclaimer">
+                                    The content of this message is confidential. If you have received it by mistake, please inform us by email reply and then delete the message. It is forbidden to copy, forward, or in any way reveal the contents of this message to anyone. The integrity and security of this email cannot be guaranteed over the Internet. Therefore, the sender will not be held liable for any damage caused by the message. Any reply to this email acknowledges acceptance of our Terms and Conditions and Privacy Policy.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </body>
+                </html>
+            `;
+        }
+
+        function updatePreview() {
+            const recipientName = document.getElementById('recipientName').value;
+            const emailDescription = document.getElementById('emailDescription').value;
+            const emailContent = document.getElementById('emailContent').value;
+            
+            const html = generateWeboidEmailTemplate(emailContent, recipientName, emailDescription, {});
+            
+            const iframe = document.getElementById('previewFrame');
+            const doc = iframe.contentDocument || iframe.contentWindow.document;
+            doc.open();
+            doc.write(html);
+            doc.close();
+        }
+
+        function setDevice(device) {
+            const iframe = document.getElementById('previewFrame');
+            const buttons = document.querySelectorAll('.device-btn');
+            
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            switch(device) {
+                case 'desktop':
+                    iframe.style.width = '100%';
+                    iframe.style.height = '600px';
+                    break;
+                case 'tablet':
+                    iframe.style.width = '768px';
+                    iframe.style.height = '600px';
+                    break;
+                case 'mobile':
+                    iframe.style.width = '375px';
+                    iframe.style.height = '600px';
+                    break;
+            }
+        }
+
+        function downloadHTML() {
+            const recipientName = document.getElementById('recipientName').value;
+            const emailDescription = document.getElementById('emailDescription').value;
+            const emailContent = document.getElementById('emailContent').value;
+            
+            const html = generateWeboidEmailTemplate(emailContent, recipientName, emailDescription, {});
+            
+            const blob = new Blob([html], { type: 'text/html' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'weboid-email-template.html';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        // Initialize preview on page load
+        window.onload = function() {
+            updatePreview();
+        };
+    </script>
+</body>
+</html>

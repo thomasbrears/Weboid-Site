@@ -1,9 +1,10 @@
-// TicketPage.jsx
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { toast } from 'react-toastify';
 import TitleHeader from '../components/TitleHeader';
+import ticketService from '../api/ticketService';
+import { ApiError } from '../api/apiClient';
 
 const TicketPage = () => {
   const [formData, setFormData] = useState({
@@ -16,6 +17,7 @@ const TicketPage = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
+  const [ticketNumber, setTicketNumber] = useState(null);
   const [errors, setErrors] = useState({});
 
   const validateForm = () => {
@@ -49,6 +51,7 @@ const TicketPage = () => {
     // Clear success message when user starts editing
     if (submitSuccess) {
       setSubmitSuccess(false);
+      setTicketNumber(null);
     }
   };
 
@@ -62,15 +65,19 @@ const TicketPage = () => {
     
     setIsSubmitting(true);
     setSubmitSuccess(false);
+    setTicketNumber(null);
 
     try {
-      // In a real implementation, you would send this data to your backend
-      // For now, we'll simulate success after a delay
-      setTimeout(() => {
-        console.log('Support ticket submitted:', formData);
+      const response = await ticketService.createTicket(formData);
+      
+      if (response.success) {
         setSubmitSuccess(true);
+        
+        // Use the formatted ticket number from the response
+        const displayTicketNumber = response.data.ticketNumber || response.data.ticket_number || response.data.id;
+        setTicketNumber(displayTicketNumber);
+        
         toast.success('Your support ticket has been submitted successfully!');
-        setIsSubmitting(false);
         
         // Reset form
         setFormData({
@@ -82,10 +89,27 @@ const TicketPage = () => {
           message: ''
         });
         setErrors({});
-      }, 1500);
+      } else {
+        throw new Error(response.message || 'Failed to submit ticket');
+      }
     } catch (error) {
       console.error('Error submitting ticket:', error);
-      toast.error('There was an error submitting your ticket. Please try again.');
+      
+      let errorMessage = 'There was an error submitting your ticket. Please try again.';
+      
+      if (error instanceof ApiError) {
+        // Handle specific API errors
+        if (error.status === 400 && error.data?.errors) {
+          errorMessage = `Validation error: ${error.data.errors.join(', ')}`;
+        } else if (error.status === 0) {
+          errorMessage = 'Unable to connect to server. Please check your internet connection.';
+        } else {
+          errorMessage = error.message;
+        }
+      }
+      
+      toast.error(errorMessage);
+    } finally {
       setIsSubmitting(false);
     }
   };
@@ -133,10 +157,13 @@ const TicketPage = () => {
                 <div>
                   <h3 className="text-lg font-medium text-green-800 dark:text-green-200 mb-2">Ticket submitted successfully!</h3>
                   <p className="text-green-700 dark:text-green-300 mb-2">
-                    Our team will review your request and respond as soon as possible.
+                    Your ticket <span className='font-bold'>#{ticketNumber}</span> has been created.
+                  </p>
+                  <p className="text-green-700 dark:text-green-300 mb-2">
+                    We will review your request and email or call you as soon as possible.
                   </p>
                   <p className="text-green-600 dark:text-green-400 text-sm">
-                    You will receive a confirmation email shortly with your ticket details and reference number.
+                    You will receive a confirmation email shortly with your ticket details and reference number. You are welcome to reply to this email with any attachments or additional information.
                   </p>
                 </div>
               </div>
