@@ -44,7 +44,7 @@ const Footer = () => {
                   <Link to="/contact" className="hover:text-blue-600 transition-colors duration-200">Contact us</Link>
                 </li>
                 <li>
-                  <a href="https://weboid.freshdesk.com" rel="noreferrer" target="_blank" className="hover:text-blue-600 transition-colors duration-200">Support Portal</a>
+                  <Link to="/support" className="hover:text-blue-600 transition-colors duration-200">Support</Link>
                 </li>
                 <li>
                   <Link to="/pricing" className="hover:text-blue-600 transition-colors duration-200">Our Pricing</Link>
@@ -106,13 +106,13 @@ const Footer = () => {
             <div className="mt-4 md:mt-0">
               <ul className="flex space-x-6 text-sm">
                 <li>
-                  <a href="https://weboid.freshdesk.com/support/solutions/articles/51000372586-terms-of-use" rel="noreferrer" target="_blank" className="hover:text-blue-600 transition-colors duration-200">Terms of Use</a>
+                  <Link to="/support/article/51000372586" className="hover:text-blue-600 transition-colors duration-200">Terms of Use</Link>
                 </li>
                 <li>
-                  <a href="https://weboid.freshdesk.com/support/solutions/articles/51000372061-privacy-policy" rel="noreferrer" target="_blank" className="hover:text-blue-600 transition-colors duration-200">Privacy Policy</a>
+                  <Link to="/support/article/51000372061" className="hover:text-blue-600 transition-colors duration-200">Privacy Policy</Link>
                 </li>
                 <li>
-                  <a href="https://weboid.freshdesk.com/support/solutions/articles/51000372062-cookie-notice" rel="noreferrer" target="_blank" className="hover:text-blue-600 transition-colors duration-200">Cookie Policy</a>
+                  <Link to="/support/article/51000372062" className="hover:text-blue-600 transition-colors duration-200">Cookie Policy</Link>
                 </li>
 
                 <a href="#" rel="noreferrer" className="hover:text-white transition-colors duration-200"
