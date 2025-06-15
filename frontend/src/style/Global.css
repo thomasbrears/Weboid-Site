@@ -1,0 +1,141 @@
+/* Body text */
+body {
+    font-family: 'OpenSansRegular', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Titles and large text */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Ahkio', sans-serif;
+    margin: 0;
+  }
+  
+  /* Bold text within body */
+  strong {
+    font-family: 'OpenSansMedium', sans-serif;
+    font-weight: 500;
+  }
+  
+  .App {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  .flex-grow {
+    flex-grow: 1;
+  }
+  
+
+/* Support Article Content Styling */
+.article-content {
+  /* Base styling */
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  line-height: 1.6;
+}
+
+/* For HTML content */
+.article-html-content {
+  /* Override any inline styles that might affect text color */
+  color: inherit !important;
+}
+
+.article-html-content h1,
+.article-html-content h2,
+.article-html-content h3,
+.article-html-content h4,
+.article-html-content h5,
+.article-html-content h6 {
+  color: inherit !important;
+  margin-bottom: 0.75rem;
+  margin-top: 1.5rem;
+  font-weight: 700;
+}
+
+.article-html-content p {
+  margin-bottom: 1rem;
+  color: inherit !important;
+}
+
+.article-html-content strong,
+.article-html-content b {
+  font-weight: 700;
+  color: inherit !important;
+}
+
+.article-html-content a {
+  color: #3b82f6 !important; /* blue-500 */
+  text-decoration: underline;
+}
+
+.dark .article-html-content a {
+  color: #60a5fa !important; /* blue-400 in dark mode */
+}
+
+.article-html-content ul,
+.article-html-content ol {
+  margin-left: 1.5rem;
+  margin-bottom: 1rem;
+  color: inherit !important;
+}
+
+.article-html-content ul {
+  list-style-type: disc;
+}
+
+.article-html-content ol {
+  list-style-type: decimal;
+}
+
+.article-html-content li {
+  margin-bottom: 0.5rem;
+  color: inherit !important;
+}
+
+.article-html-content div {
+  color: inherit !important;
+}
+
+/* Remove any custom background colors that might affect readability in dark mode */
+.article-html-content div[style*="background"],
+.article-html-content span[style*="background"] {
+  background-color: transparent !important;
+}
+
+/* Force all text to respect the theme colors */
+.dark .article-html-content * {
+  color: #e5e7eb !important; /* gray-200 for dark mode */
+}
+
+.dark .article-html-content a {
+  color: #60a5fa !important; /* blue-400 for dark mode */
+}
+
+/* Light mode text colors */
+.article-html-content * {
+  color: #1f2937 !important; /* gray-800 for light mode */
+}
+
+/* Fix image display */
+.article-html-content img {
+  max-width: 100%;
+  height: auto;
+  margin: 1rem 0;
+}
+
+/* Responsive adjustments for mobile */
+@media (max-width: 640px) {
+  .article-html-content {
+    font-size: 0.95rem;
+  }
+  
+  .article-html-content h1 {
+    font-size: 1.5rem;
+  }
+  
+  .article-html-content h2 {
+    font-size: 1.25rem;
+  }
+}
