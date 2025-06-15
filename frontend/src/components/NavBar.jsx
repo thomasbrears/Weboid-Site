@@ -84,7 +84,7 @@ const Navbar = () => {
                 <Link to="/contact" className={`px-3 py-2 rounded-md transition-colors duration-200 ${textColor} hover:text-blue-600`}>Contact</Link>
                 <Link to="/support" className={`px-3 py-2 rounded-md transition-colors duration-200 ${textColor} hover:text-blue-600`}>Knowledge Base</Link>
                 <Link to="/pricing" className={`px-3 py-2 rounded-md transition-colors duration-200 ${textColor} hover:text-blue-600`}>Pricing</Link>
-                <Link to="/pricing#proposal" className={`px-3 py-2 rounded-md transition-colors duration-200 ${textColor} hover:text-blue-600`}>Propsoal</Link>
+                <Link to="/pricing#proposal" className={`px-3 py-2 rounded-md transition-colors duration-200 ${textColor} hover:text-blue-600`}>Proposal</Link>
                 <Link to="/portfolio" className={`px-3 py-2 rounded-md transition-colors duration-200 ${textColor} hover:text-blue-600`}>Portfolio</Link>
 
                 {/* Theme Toggle Button */}

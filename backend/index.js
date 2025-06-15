@@ -11,11 +11,36 @@ import ticketRoutes from './routes/ticketRoutes.js';
 const app = express();
 const PORT = process.env.PORT || 8000;
 
-// CORS configuration
+// dynamic cors (v1.1)
 const corsOptions = {
-  origin: process.env.FRONTEND_URL || 'http://localhost:3000',
-  credentials: true,
-  methods: 'GET,POST,PUT,DELETE,OPTIONS'
+  origin: (origin, callback) => {
+    // List of allowed origins
+    const allowedOrigins = [
+      'https://weboid.dev',
+      'https://weboidev.vercel.app'
+    ];
+
+    // Check for weboid-teams-projects pattern matching
+    const IS_WEBOID_PROJECT = origin &&
+      (origin.startsWith('https://weboid-teams-projects.vercel.app') ||
+       origin.includes('-weboid-teams-projects.vercel.app'));
+
+    // In production, check against allowed list or pattern
+    if (process.env.NODE_ENV === 'production') {
+      // Check if origin is allowed or matches WEBOID Project pattern
+      if (!origin || allowedOrigins.includes(origin) || IS_WEBOID_PROJECT) {
+        callback(null, true);
+      } else {
+        console.log(`CORS rejected: ${origin}`);
+        callback(new Error('Not allowed by CORS'));
+      }
+    } else {
+      // In development, allow all origins
+      callback(null, true);
+    }
+  },
+  methods: 'GET,POST,PUT,DELETE,OPTIONS',
+  credentials: true
 };
 
 // Middleware
