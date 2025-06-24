@@ -100,6 +100,10 @@ const AppContent = () => {
           <Route path="/helpdesk" element={<Navigate to="/support" />} />
           <Route path="/help" element={<Navigate to="/support" />} />
           <Route path="/support/article" element={<Navigate to="/support" />} />
+          <Route path="/terms" element={<Navigate to="/support/article/51000372586" />} />
+          <Route path="/privacy" element={<Navigate to="/support/article/51000372061" />} />
+          <Route path="/cookie-notice" element={<Navigate to="/support/article/51000372062" />} />
+          <Route path="/cookies" element={<Navigate to="/support/article/51000372062" />} />
 
           {/* pages */}  
           <Route path="*" element={<NotFoundPage />} />
